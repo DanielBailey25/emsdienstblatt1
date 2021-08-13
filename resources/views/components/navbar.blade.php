@@ -1,0 +1,87 @@
+<div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top">
+    <div
+        class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
+        <a href="/" class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <span class="fs-5"><span class="d-none d-sm-inline">{{Auth::user()->client->name}} Dienstblatt</span></span>
+        </a>
+        <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start"
+            id="menu">
+            <li class="nav-item">
+                <a href="{{ route('home') }}" class="nav-link px-sm-0 px-2">
+                    <i class="fs-5 bi-box-arrow-right"></i><span class="ms-2 d-none d-sm-inline">Eintragen</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('home') }}" class="nav-link px-sm-0 px-2">
+                    <i class="fs-5 bi-box-arrow-left"></i><span class="ms-2 d-none d-sm-inline">Austragen</span>
+                </a>
+            </li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('home') }}" class="nav-link px-sm-0 px-2">
+                    <i class="fs-5 bi-house"></i><span class="ms-2 d-none d-sm-inline">Dienstblatt</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('workers') }}" class="nav-link px-sm-0 px-2">
+                    <i class="fs-5 bi-people"></i><span class="ms-2 d-none d-sm-inline">Mitarbeiter</span> </a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fs-5 bi-info-square"></i><span class="ms-2 d-none d-sm-inline">Information</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
+                    <li><a class="dropdown-item" href="{{ route('exemptions') }}">Freistellungen</a>
+                    </li>
+                    <li><a class="dropdown-item" href="{{ route('events') }}">Termine</a></li>
+                    <li><a class="dropdown-item" href="{{ route('news') }}">News</a></li>
+                    <li><a class="dropdown-item" href="{{ route('bans') }}">Hausverbote</a></li>
+                    <li><a class="dropdown-item" href="{{ route('interns') }}">Praktikanten</a></li>
+                    <li><a class="dropdown-item" href="{{ route('absences') }}">Krankenscheine</a>
+                    </li>
+                    <li><a class="dropdown-item" href="{{ route('nordmap') }}">Norden-Karte</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fs-5 bi-book"></i><span class="ms-2 d-none d-sm-inline">Ausbildung</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
+                    <li><a class="dropdown-item" href="#">Abwesenheiten</a></li>
+                    <li><a class="dropdown-item" href="#">Hausverbote</a></li>
+                    <li><a class="dropdown-item" href="#">Termine</a></li>
+                    <li><a class="dropdown-item" href="#">New project...</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="dropdown py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png"
+                    alt="hugenerd" width="28" height="28" class="rounded-circle">
+                <span class="d-none d-sm-inline mx-2">{{ Auth::user()->name }}</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                <li><a class="dropdown-item" href="#">Einstellungen</a></li>
+                <li><a class="dropdown-item" href="#">Profil</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        {{ __('Abmelden') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                        class="d-none">
+                        @csrf
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

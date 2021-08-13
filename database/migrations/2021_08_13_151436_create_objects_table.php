@@ -1,11 +1,12 @@
 <?php
 
 use App\Models\Client;
+use App\Models\ObjectType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateObjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +15,12 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('objects', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->integer('type')->default(1);
+            $table->string('name');
+            $table->string('description')->nullable();
             $table->foreignIdFor(Client::class);
-            $table->string('password');
-            $table->rememberToken();
+            $table->foreignIdFor(ObjectType::class);
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('objects');
     }
 }
