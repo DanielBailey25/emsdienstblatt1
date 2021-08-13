@@ -7,7 +7,7 @@
         <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start"
             id="menu">
             <li class="nav-item">
-                <a href="{{ route('home') }}" class="nav-link px-sm-0 px-2">
+                <a href="{{ route('startWorker') }}" class="nav-link px-sm-0 px-2">
                     <i class="fs-5 bi-box-arrow-right"></i><span class="ms-2 d-none d-sm-inline">Eintragen</span>
                 </a>
             </li>
