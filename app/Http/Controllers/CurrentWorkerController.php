@@ -22,10 +22,16 @@ class CurrentWorkerController extends Controller
         $this->checkIfUserHaveWorkerAndStop();
         CurrentWorker::create([
             'user_id' => Auth::user()->id,
+            'client_id' => Auth::user()->client_id,
             'description' => $request->input('description'),
             'item_id' => $request->input('item_id'),
             'state_id' => $request->input('state_id'),
         ]);
+        return redirect()->route('home');
+    }
+
+    public function stopWorker() {
+        $this->checkIfUserHaveWorkerAndStop();
         return redirect()->route('home');
     }
 

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Client;
+use App\Models\CurrentWorker;
 use App\Models\Item;
 use App\Models\State;
 use App\Models\User;
@@ -20,6 +22,8 @@ class CreateCurrentWorkerTable extends Migration
         Schema::create('current_worker', function (Blueprint $table) {
             $table->id();
             $table->string('description')->nullable();
+            $table->foreignIdFor(CurrentWorker::class, 'related_id')->nullable();
+            $table->foreignIdFor(Client::class);
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Item::class);
             $table->foreignIdFor(State::class);

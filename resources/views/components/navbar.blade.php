@@ -12,8 +12,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('home') }}" class="nav-link px-sm-0 px-2">
-                    <i class="fs-5 bi-box-arrow-left"></i><span class="ms-2 d-none d-sm-inline">Austragen</span>
+                <a href="{{ route('formStopWorker') }}" class="nav-link px-sm-0 px-2">
+                    <i class="fs-5 bi-box-arrow-right"></i><span class="ms-2 d-none d-sm-inline">Austragen</span>
                 </a>
             </li>
             <li>
