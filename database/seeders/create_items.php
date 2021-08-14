@@ -39,5 +39,30 @@ class create_items extends Seeder
             'client_id' => 1,
             'item_type_id' => 2,
         ]);
+        DB::table('items')->insert([
+            'name' => 'KH Pillbox',
+            'client_id' => 1,
+            'item_type_id' => 1,
+        ]);
+        DB::table('items')->insert([
+            'name' => 'KH Davis',
+            'client_id' => 1,
+            'item_type_id' => 1,
+        ]);
+        DB::table('items')->insert([
+            'name' => 'KH Rockford',
+            'client_id' => 1,
+            'item_type_id' => 1,
+        ]);
+        DB::table('items')->insert([
+            'name' => 'KH Sandy',
+            'client_id' => 1,
+            'item_type_id' => 1,
+        ]);
+        DB::table('items')->insert([
+            'name' => 'KH Paleto',
+            'client_id' => 1,
+            'item_type_id' => 1,
+        ]);
     }
 }

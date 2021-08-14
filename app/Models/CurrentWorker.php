@@ -42,8 +42,12 @@ class CurrentWorker extends Model
         return $this->belongsTo(State::class, 'state_id');
     }
 
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function related() {
-        return $this->hasMany(self::class, 'related_id');
+        return CurrentWorker::where('related_id', $this->id)->where('ended_at', null)->get();
     }
 
     public function readableStartedAt() {

@@ -19,10 +19,15 @@ class CurrentWorkerController extends Controller
     }
 
     public function startWorker(Request $request) {
-        $this->checkIfUserHaveWorkerAndStop();
+        $this->userHaveWorkerAndStop();
+        $itemUsedBy = $this->itemUsedBy($request->input('item_id'));
+        if ($itemUsedBy) {
+            $related_id = $itemUsedBy->id;
+        }
         CurrentWorker::create([
             'user_id' => Auth::user()->id,
             'client_id' => Auth::user()->client_id,
+            'related_id' => $related_id ?? null,
             'description' => $request->input('description'),
             'item_id' => $request->input('item_id'),
             'state_id' => $request->input('state_id'),
@@ -31,14 +36,19 @@ class CurrentWorkerController extends Controller
     }
 
     public function stopWorker() {
-        $this->checkIfUserHaveWorkerAndStop();
+        $this->userHaveWorkerAndStop();
         return redirect()->route('home');
     }
 
-    public function checkIfUserHaveWorkerAndStop() {
+    public function userHaveWorkerAndStop() {
         $worker = CurrentWorker::where(['user_id'=> Auth::user()->id, 'ended_at'=> null])->first();
         if ($worker) {
             $worker->stopWorker();
         }
+    }
+
+    public function itemUsedBy($itemId) {
+        $worker = CurrentWorker::where(['item_id'=> $itemId, 'ended_at'=> null])->first();
+        return $worker;
     }
 }

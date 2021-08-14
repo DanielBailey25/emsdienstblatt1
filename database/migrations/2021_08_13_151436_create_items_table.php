@@ -19,6 +19,7 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
+            $table->boolean('is_closed')->default(0);
             $table->foreignIdFor(Client::class);
             $table->foreignIdFor(ItemType::class);
             $table->timestamps();

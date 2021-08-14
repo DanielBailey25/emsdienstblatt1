@@ -6,9 +6,12 @@
     @include('components.navbar')
 
     <div class="py-4 col d-flex flex-column h-sm-100">
-        <div class="row row-cols-auto">
+
+        @include('components.infobar')
+
+        <div class="row row-cols-auto py-4">
             @if($currentWorker->count() == 0)
-                <div class="px-5 py-3 col-md">
+                <div class="col-md">
                     <div class="alert alert-primary" role="alert">
                         Es ist zurzeit keine Einheit im Dienst.
                     </div>
@@ -17,7 +20,7 @@
                 @foreach($currentWorker as $worker)
                     <div class="col-md">
                         <div class="card">
-                            <div class="card-header">{{ $worker->item->name }}</div>
+                            <div class="card-header bg-primary text-white">{{ $worker->item->name }}</div>
                             <div class="card-body-md">
                                 <div class='table-responsive'>
                                     <table class="table">
@@ -32,24 +35,32 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <th>01</th>
-                                                <td>38</td>
+                                            @if ($worker->user->rank == 0)
+                                              <tr class="table-danger">
+                                            @else
+                                              <tr>
+                                            @endif
+                                                <th>{{ $worker->user->rank }}</th>
+                                                <td>{{ $worker->user->service_number }}</td>
+                                                <td>{{ $worker->user->name }}</td>
                                                 <td>{{ $worker->name }}</td>
-                                                <td></td>
                                                 <td>{{ $worker->state->name }}</td>
                                                 <td>{{ $worker->readableStartedAt() }}</td>
                                             </tr>
-                                            {{-- @foreach ($worker->related as $subWorkers)
-                                            <tr>
-                                                <th>01</th>
-                                                <td>38</td>
-                                                <td>Michael_Geissler</td>
-                                                <td></td>
-                                                <td>Außendienst</td>
-                                                <td>21:23</td>
+                                            @foreach ($worker->related() as $subWorker)
+                                            @if ($subWorker->user->rank == 0)
+                                                <tr class="table-danger">
+                                            @else
+                                                <tr>
+                                            @endif
+                                                <th>{{ $subWorker->user->rank }}</th>
+                                                <td>{{ $subWorker->user->service_number }}</td>
+                                                <td>{{ $subWorker->user->name }}</td>
+                                                <td>{{ $subWorker->name }}</td>
+                                                <td>{{ $subWorker->state->name }}</td>
+                                                <td>{{ $subWorker->readableStartedAt() }}</td>
                                             </tr>
-                                            @endforeach--}}
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

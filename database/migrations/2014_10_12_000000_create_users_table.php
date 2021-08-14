@@ -18,6 +18,9 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->integer('type')->default(1);
+            $table->integer('rank')->default(0);
+            $table->integer('service_number')->unique();
+            $table->integer('phone')->nullable();
             $table->foreignIdFor(Client::class);
             $table->string('password');
             $table->rememberToken();

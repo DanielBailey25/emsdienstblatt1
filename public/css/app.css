@@ -16773,3 +16773,13 @@ textarea.form-control-lg {
 .h-sm-100 {
     height: 100%;
 }
+
+#infobar .card {
+    cursor: pointer;
+}
+
+#infobar .card:hover {
+    background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15))
+}
+
+
