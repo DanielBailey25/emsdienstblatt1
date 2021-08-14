@@ -17,20 +17,22 @@
         <form action={{route('formStartWorker')}} method="POST">
             <input type="text" class="form-control mb-4 mt-2" id="searchItems" aria-describedby="searchForItems" placeholder="Suche">
             @csrf
-            <div class="form-group" id="groupedItemSelector">
+            <div class="form-group row" id="groupedItemSelector">
                 @foreach ($itemTypes as $type)
                     @if($type->items()->count() != 0)
-                        <h1 class="fs-3">{{$type->name}}</h1>
-                        <div class ="row mb-3">
-                            @foreach ($type->items() as $item)
-                            <div class="col-md-1 mb-2">
-                                <div class="card bg-secondary text-white active itemTilesForStartWorker" onclick="setItemId(this, {{$item->id}})">
-                                    <div class="card-body">
-                                        {{$item->name}}
+                        <div class='col-md-6'>
+                            <h1 class="fs-3">{{$type->name}}</h1>
+                            <div class ="row mb-3">
+                                @foreach ($type->items() as $item)
+                                <div class="col-md-2 mb-2">
+                                    <div class="card bg-secondary text-white active itemTilesForStartWorker" onclick="setItemId(this, {{$item->id}})">
+                                        <div class="card-body">
+                                            {{$item->name}}
+                                        </div>
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
-                            @endforeach
                         </div>
                     @endif
                 @endforeach
