@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/start', [App\Http\Controllers\CurrentWorkerController::class, 'startWorker'])->name('formStartWorker');
         Route::get('/stop', [App\Http\Controllers\CurrentWorkerController::class, 'stopWorker'])->name('formStopWorker');
         Route::post('/switchItemClosedState', [App\Http\Controllers\DashboardController::class, 'switchItemClosedState'])->name('switchItemClosedState');
+        Route::post('/centerChangeAssignment', [App\Http\Controllers\DashboardController::class, 'centerChangeAssignment'])->name('centerChangeAssignment');
     });
 
     Route::get('/workers', [App\Http\Controllers\WorkersController::class, 'index'])->name('workers');

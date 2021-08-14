@@ -8,12 +8,22 @@
             id="menu">
             <li class="nav-item">
                 <a href="{{ route('startWorker') }}" class="nav-link px-sm-0 px-2">
-                    <i class="fs-5 bi-box-arrow-right"></i><span class="ms-2 d-none d-sm-inline">Eintragen</span>
+                    <i class="fs-5 bi-box-arrow-right text-success"></i><span class="ms-2 d-none d-sm-inline">Eintragen</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="{{ route('formStopWorker') }}" class="nav-link px-sm-0 px-2">
-                    <i class="fs-5 bi-box-arrow-right"></i><span class="ms-2 d-none d-sm-inline">Austragen</span>
+                    <i class="fs-5 bi-box-arrow-left text-danger"></i><span class="ms-2 d-none d-sm-inline">Austragen</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('formStopWorker') }}" class="nav-link px-sm-0 px-2">
+                    <i class="fs-5 bi-calendar-date"></i><span class="ms-2 d-none d-sm-inline">Abwesenheit</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfh_YNEnEPwsKTOdZyjNwpzXdQQAoEF461_sZbHGJ8REpxcTw/viewform" target="_blank" class="nav-link px-sm-0 px-2">
+                    <i class="fs-5 bi-journal-text"></i><span class="ms-2 d-none d-sm-inline">Prüfungsanmeldung</span>
                 </a>
             </li>
             <li>
@@ -54,9 +64,28 @@
                     <li><a class="dropdown-item" href="#">Abwesenheiten</a></li>
                     <li><a class="dropdown-item" href="#">Hausverbote</a></li>
                     <li><a class="dropdown-item" href="#">Termine</a></li>
-                    <li><a class="dropdown-item" href="#">New project...</a></li>
                 </ul>
             </li>
+            @if (Auth::user()->type == 0)
+                {{-- Don't display the administration area under md size. --}}
+                <li class="d-none d-md-block">
+                    <hr class="dropdown-divider">
+                </li>
+                <li class="dropdown d-none d-md-block">
+                    <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fs-5 bi-building"></i><span class="ms-2 d-none d-sm-inline">Administration</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
+                        <li><a class="dropdown-item" href="#">Mitarbeiter erstellen</a></li>
+                        <li><a class="dropdown-item" href="#">Mitarbeiter bearbeiten</a></li>
+                        <li><a class="dropdown-item" href="#">Zugriffsrechte</a></li>
+                        <li><a class="dropdown-item" href="#">News</a></li>
+                        <li><a class="dropdown-item" href="#">Ausbildung hinzufügen</a></li>
+                        <li><a class="dropdown-item" href="#">Gebäude / Fahrzeuge</a></li>
+                    </ul>
+                </li>
+            @endif
         </ul>
         <div class="dropdown py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"

@@ -16776,6 +16776,10 @@ textarea.form-control-lg {
 
 #infobar .card {
     cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 
 #infobar .card:hover {

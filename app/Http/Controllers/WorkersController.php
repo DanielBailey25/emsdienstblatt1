@@ -12,4 +12,8 @@ class WorkersController extends Controller
         $users = User::where('client_id', Auth::user()->client_id)->orderBy('rank', 'desc')->orderBy('name', 'asc')->get();
         return view('workers', ['workers' => $users]);
     }
+
+    public function showInterns() {
+        // show intern list
+    }
 }

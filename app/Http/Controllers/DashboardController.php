@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AssignedControlCenter;
 use App\Models\CurrentWorker;
 use App\Models\Item;
 use Illuminate\Http\Request;
@@ -20,12 +21,14 @@ class DashboardController extends Controller
         $currentWorkerCount = $currentWorker->count();
         $maxWorkerCount = $this->getCountActiveWorkers();
         $medicalDepartments = $this->getItemsByType(1);
+        $controlCenters = $this->getControlCentersByClientId();
 
         return view('dashboard', [
             'currentWorker' => $currentWorker,
             'currentWorkerCount' => $currentWorkerCount,
             'maxWorkerCount' => $maxWorkerCount,
             'medicalDepartments' => $medicalDepartments,
+            'controlCenters' => $controlCenters,
         ]);
     }
 
@@ -41,6 +44,10 @@ class DashboardController extends Controller
         return Item::where(['client_id' => Auth::user()->client_id, 'item_type_id' => $typeId])->get();
     }
 
+    public function getControlCentersByClientId() {
+        return AssignedControlCenter::where('client_id', Auth::user()->client_id)->get();
+    }
+
     public function switchItemClosedState(Request $request) {
         $itemId = $request->input('item_id');
         $isClosed = $request->input('is_closed');
@@ -48,6 +55,23 @@ class DashboardController extends Controller
         $item = Item::where('id', $itemId)->first();
         $item->is_closed = !$isClosed;
         $item->save();
+
+        return redirect()->route('home');
+    }
+
+    public function centerChangeAssignment(Request $request) {
+        $centerId = $request->input('center_id');
+
+        $center = AssignedControlCenter::where('id', $centerId)->first();
+
+        // Check if center is allready assigned to the curren user
+        if ($center->user_id == Auth::user()->id) {
+            // If thats the case, unassign the user from the center
+            $center->user_id = null;
+        } else {
+            $center->user_id = Auth::user()->id;
+        }
+        $center->save();
 
         return redirect()->route('home');
     }

@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(create_item_types::class);
         $this->call(create_items::class);
         $this->call(create_states::class);
+        $this->call(create_assigned_control_centers_for_clients::class);
     }
 }

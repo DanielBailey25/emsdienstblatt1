@@ -4,6 +4,7 @@
 
 #infobar .card {
     cursor: pointer;
+    user-select: none;
 }
 
 #infobar .card:hover {
