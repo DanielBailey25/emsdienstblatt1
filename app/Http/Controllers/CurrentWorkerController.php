@@ -15,7 +15,7 @@ class CurrentWorkerController extends Controller
     public function index() {
         $items = Item::where('client_id', Auth::user()->client_id)->get();
         $states = State::where('client_id', Auth::user()->client_id)->get();
-        return view('startWorker', ['items' => $items, 'states' => $states]);
+        return view('startworker', ['items' => $items, 'states' => $states]);
     }
 
     public function startWorker(Request $request) {
