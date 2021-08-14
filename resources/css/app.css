@@ -2,12 +2,14 @@
     height: 100%;
 }
 
-#infobar .card {
+#infobar .card,  #groupedItemSelector .card {
     cursor: pointer;
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 
-#infobar .card:hover {
+#infobar .card:hover, #groupedItemSelector .card:hover {
     background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15))
 }
-

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CurrentWorker;
 use App\Models\Item;
+use App\Models\ItemType;
 use App\Models\State;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -13,12 +14,20 @@ class CurrentWorkerController extends Controller
 {
 
     public function index() {
-        $items = Item::where('client_id', Auth::user()->client_id)->get();
+        $itemTypes = ItemType::where('client_id', Auth::user()->client_id)->get();
         $states = State::where('client_id', Auth::user()->client_id)->get();
-        return view('startworker', ['items' => $items, 'states' => $states]);
+
+        return view('startworker', ['itemTypes' => $itemTypes, 'states' => $states]);
     }
 
     public function startWorker(Request $request) {
+        $request->validate([
+            'state_id' => 'required',
+            'item_id' => 'required',
+        ],[
+            'item_id.required' => 'Ein Auto oder Gebäude muss ausgewählt werden.'
+        ]);
+
         $this->userHaveWorkerAndStop();
         $itemUsedBy = $this->itemUsedBy($request->input('item_id'));
         if ($itemUsedBy) {

@@ -39,11 +39,15 @@ class create_item_types extends Seeder
             'client_id' => 1,
         ]);
         DB::table('item_types')->insert([
-            'name' => 'Tailgator',
+            'name' => 'Tailgater',
             'client_id' => 1,
         ]);
         DB::table('item_types')->insert([
             'name' => 'VSTR',
+            'client_id' => 1,
+        ]);
+        DB::table('item_types')->insert([
+            'name' => 'Buffalo',
             'client_id' => 1,
         ]);
     }

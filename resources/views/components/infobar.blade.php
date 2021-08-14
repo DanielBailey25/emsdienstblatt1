@@ -54,13 +54,13 @@
         @if($medicalDepartment->is_closed == 0)
           <div class="card bg-success text-white">
             <div class="card-body">
-              {{$medicalDepartment->name}}: geöffnet
+              {{$medicalDepartment->name}}:<br>geöffnet
             </div>
           </div>
         @else
           <div class="card bg-danger text-white">
             <div class="card-body">
-              {{$medicalDepartment->name}}: geschlossen
+              {{$medicalDepartment->name}}:<br>geschlossen
             </div>
           </div>
         @endif
