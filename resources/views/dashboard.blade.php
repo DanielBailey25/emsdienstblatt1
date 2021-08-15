@@ -18,12 +18,12 @@
                 </div>
             @else
                 @foreach($currentWorker as $worker)
-                    <div class="col-md">
-                        <div class="card">
+                    <div class="col-md ms-auto mb-4">
+                        <div class="card bg-light">
                             <div class="card-header bg-primary text-white">{{ $worker->item->name }}</div>
                             <div class="card-body-md">
                                 <div class='table-responsive'>
-                                    <table class="table">
+                                    <table class="table text-white">
                                         <thead>
                                             <tr>
                                                 <th scope="col">R</th>

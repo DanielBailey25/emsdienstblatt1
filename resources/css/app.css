@@ -1,3 +1,7 @@
+.table {
+    color: var(--bs-body-color);
+}
+
 .h-sm-100 {
     height: 100%;
 }
@@ -12,4 +16,28 @@
 
 #infobar .card:hover, #groupedItemSelector .card:hover {
     background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15))
+}
+
+  .bg-grey {
+    background-color: #181818 !important;
+  }
+
+  .bg-grey-light{
+    background-color: #404040 !important;
+  }
+
+  .bg-light{
+    background-color: #282828 !important;
+  }
+
+  .bg-lighter{
+    background-color: var(--bs-secondary) !important;
+  }
+
+  .bg-red {
+    background-color: #DA0037 !important;
+  }
+
+  ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
 }

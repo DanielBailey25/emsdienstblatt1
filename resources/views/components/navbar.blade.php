@@ -1,6 +1,6 @@
-<div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top">
+<div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-grey d-flex sticky-top">
     <div
-        class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
+        class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2">
         <a href="/" class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <span class="fs-5"><span class="d-none d-sm-inline">{{Auth::user()->client->name}} Dienstblatt</span></span>
         </a>
@@ -17,7 +17,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('formStopWorker') }}" class="nav-link px-sm-0 px-2">
+                <a href="{{ route('createAbsence') }}" class="nav-link px-sm-0 px-2">
                     <i class="fs-5 bi-calendar-date"></i><span class="ms-2 d-none d-sm-inline">Abwesenheit</span>
                 </a>
             </li>
@@ -44,13 +44,13 @@
                     <i class="fs-5 bi-info-square"></i><span class="ms-2 d-none d-sm-inline">Information</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
-                    <li><a class="dropdown-item" href="{{ route('exemptions') }}">Freistellungen</a>
+                    <li><a class="dropdown-item" href="{{ route('showAbsences') }}">Freistellungen</a>
                     </li>
                     <li><a class="dropdown-item" href="{{ route('events') }}">Termine</a></li>
                     <li><a class="dropdown-item" href="{{ route('news') }}">News</a></li>
                     <li><a class="dropdown-item" href="{{ route('bans') }}">Hausverbote</a></li>
                     <li><a class="dropdown-item" href="{{ route('interns') }}">Praktikanten</a></li>
-                    <li><a class="dropdown-item" href="{{ route('absences') }}">Krankenscheine</a>
+                    {{-- <li><a class="dropdown-item" href="{{ route('showAbsences') }}">Krankenscheine</a> --}}
                     </li>
                     <li><a class="dropdown-item" href="{{ route('nordmap') }}">Norden-Karte</a></li>
                 </ul>
@@ -95,8 +95,7 @@
                 <span class="d-none d-sm-inline mx-2">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                <li><a class="dropdown-item" href="#">Einstellungen</a></li>
-                <li><a class="dropdown-item" href="#">Profil</a></li>
+                <li><a class="dropdown-item" href="{{route('profile')}}">Profil</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
