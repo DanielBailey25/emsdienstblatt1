@@ -50,7 +50,11 @@ class CurrentWorker extends Model
         return CurrentWorker::where('related_id', $this->id)->where('ended_at', null)->get();
     }
 
-    public function readableStartedAt() {
+    public function readableStartedAtDiff() {
         return Carbon::parse($this->started_at)->diffForHumans();
+    }
+
+    public function readableStartedAt() {
+        return Carbon::parse($this->started_at)->isoFormat('DD.MM.YYYY HH:ss');
     }
 }

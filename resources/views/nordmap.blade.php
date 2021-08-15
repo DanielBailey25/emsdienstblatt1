@@ -6,7 +6,11 @@
     @include('components.navbar')
 
     <div class="col d-flex flex-column h-sm-100">
-        Norden-Karte
+        <div class="row">
+            <div class="col-md-10">
+                <img style="width: 100%" src="{{ asset('img/nordmap.png')}}" alt="nordmap" title="Nordkarte">
+            </div>
+        </div>
     </div>
 </div>
 @endsection

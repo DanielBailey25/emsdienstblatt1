@@ -20,7 +20,7 @@
                 @foreach($currentWorker as $worker)
                     <div class="col-md ms-auto mb-4">
                         <div class="card bg-light">
-                            <div class="card-header bg-primary text-white">{{ $worker->item->name }}</div>
+                            <div class="card-header bg-primary text-white">{{ $worker->item->name }}<form action={{route('formStartWorker')}} method="POST" id="currentWorkTileButton_{{$worker->id}}">@csrf<input type='hidden' value={{$worker->state_id}} name='state_id'><input type='hidden' value={{$worker->item_id}} name='item_id'><span onclick="getElementById('currentWorkTileButton_{{$worker->id}}').submit();" class="lh-sm badge rounded-pill bg-dark makeClickable assignToCurrentWorkerButton" style="font-size: 12px">Eintragen</span></form></div>
                             <div class="card-body-md">
                                 <div class='table-responsive'>
                                     <table class="table text-white">
@@ -43,9 +43,9 @@
                                                 <th>{{ $worker->user->rank }}</th>
                                                 <td>{{ $worker->user->service_number }}</td>
                                                 <td>{{ $worker->user->name }}</td>
-                                                <td>{{ $worker->name }}</td>
+                                                <td>{{ $worker->description }}</td>
                                                 <td>{{ $worker->state->name }}</td>
-                                                <td>{{ $worker->readableStartedAt() }}</td>
+                                                <td>{{ $worker->readableStartedAtDiff() }}</td>
                                             </tr>
                                             @foreach ($worker->related() as $subWorker)
                                             @if ($subWorker->user->rank == 0)
@@ -58,7 +58,7 @@
                                                 <td>{{ $subWorker->user->name }}</td>
                                                 <td>{{ $subWorker->name }}</td>
                                                 <td>{{ $subWorker->state->name }}</td>
-                                                <td>{{ $subWorker->readableStartedAt() }}</td>
+                                                <td>{{ $subWorker->readableStartedAtDiff() }}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>

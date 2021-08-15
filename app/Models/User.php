@@ -42,4 +42,8 @@ class User extends Authenticatable
     public function client() {
         return $this->belongsTo(Client::class, 'client_id');
     }
+
+    public function getLatestCurrentWorker() {
+        return CurrentWorker::where('user_id', $this->id)->orderBy('created_at', 'asc')->first();
+    }
 }

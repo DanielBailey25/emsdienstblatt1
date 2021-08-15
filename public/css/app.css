@@ -16812,4 +16812,22 @@ textarea.form-control-lg {
 
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
-}
+  }
+
+  thead, tbody, tfoot, tr, td, th {
+    border-style: groove;
+  }
+
+  .makeClickable {
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  }
+
+  .assignToCurrentWorkerButton{
+    position: absolute;
+    right: 10px;
+    top: 8px;
+  }

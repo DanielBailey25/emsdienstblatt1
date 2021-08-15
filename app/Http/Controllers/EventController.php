@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class EventController extends Controller
+class EventsController extends Controller
 {
     public function index() {
-        return view('events');
+        $events = Event::where('receiver_id', Auth::user()->id)->get();
+
+        return view('events', ['events' => $events]);
     }
 }

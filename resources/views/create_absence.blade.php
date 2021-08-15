@@ -7,7 +7,7 @@
 
     <div class="col d-flex flex-column h-sm-100">
         <div class="row align-items-center h-100">
-            <div class="col-5 mx-auto">
+            <div class="col-md-5 mx-auto">
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         @foreach ($errors->all() as $error)
