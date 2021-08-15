@@ -59,3 +59,7 @@
     right: 10px;
     top: 8px;
   }
+
+  .form-control {
+    border-color: #525252;
+  }
