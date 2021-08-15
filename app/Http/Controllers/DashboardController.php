@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\AssignedControlCenter;
 use App\Models\CurrentWorker;
 use App\Models\Item;
+use App\Models\Training;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class DashboardController extends Controller
 {

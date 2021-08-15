@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -41,5 +42,8 @@ class create_users extends Seeder
             'client_id' => 1,
             'password' => Hash::make('einfach'),
         ]);
+        User::find(1)->assignRole('Admin');
+        User::find(2)->assignRole('Editor');
+        User::find(3)->assignRole('Benutzer');
     }
 }

@@ -22,7 +22,11 @@
                         <th scope="row">{{$intern->name}}</th>
                         <td>{{$intern->service_number}}</td>
                         <td>{{$intern->phone}}</td>
-                        <td>{{$intern->getLatestCurrentWorker()->readableStartedAt() ?? ''}}</td>
+                        @if($intern->getLatestCurrentWorker())
+                            <td>{{$intern->getLatestCurrentWorker()->readableStartedAt() ?? ''}}</td>
+                        @else
+                            <td></td>
+                        @endif
                     </tr>
                 @endforeach
             </tbody>

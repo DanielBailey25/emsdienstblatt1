@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
+Auth::routes([
+    'register' => false, // Registration Routes...
+    'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+]);
+
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
@@ -38,8 +43,24 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/events', [App\Http\Controllers\EventsController::class, 'index'])->name('events');
         // Route::get('/absences', [App\Http\Controllers\AbsenceController::class, 'showAbsences'])->name('showAbsences');
         Route::get('/interns', [App\Http\Controllers\WorkersController::class, 'showInterns'])->name('interns');
+        Route::get('/training/{id}', [App\Http\Controllers\TrainingsController::class, 'showTraining'])->name('training');
         Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news');
         Route::get('/nordmap', [App\Http\Controllers\NordmapController::class, 'index'])->name('nordmap');
+    });
+    Route::group(['middleware' => ['role:Admin']], function () {
+        Route::prefix('admin')->group(function () {
+            Route::get('/users', [App\Http\Controllers\UserController::class, 'users'])->name('users');
+            Route::get('/add/user', [App\Http\Controllers\UserController::class, 'addUserView'])->name('addUserView');
+            Route::get('/add/training', [App\Http\Controllers\TrainingsController::class, 'createTrainingView'])->name('createTraining');
+            Route::post('/add/training', [App\Http\Controllers\TrainingsController::class, 'createTraining'])->name('createTraining');
+            Route::post('/form/add/user', [App\Http\Controllers\UserController::class, 'createUser'])->name('createUserForm');
+        });
+    });
+    Route::group(['middleware' => ['role:Editor|Admin']], function () {
+        Route::prefix('admin')->group(function () {
+            Route::get('/unlock/training', [App\Http\Controllers\TrainingsController::class, 'unlockTrainingView'])->name('unlockTrainingView');
+            Route::post('/unlock/training', [App\Http\Controllers\TrainingsController::class, 'unlockTrainingForUsers'])->name('unlockTrainingForUsers');
+        });
     });
 
     Route::prefix('user')->group(function () {
