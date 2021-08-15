@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(create_assigned_control_centers_for_clients::class);
         $this->call(create_absence_types::class);
         $this->call(create_news_categories::class);
+        $this->call(create_courses::class);
     }
 }

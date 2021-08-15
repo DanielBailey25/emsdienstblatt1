@@ -6,7 +6,7 @@
     @include('components.navbar')
 
     <div class="col d-flex flex-column h-sm-100">
-        Freistellungen
+        Hausverbote
     </div>
 </div>
 @endsection

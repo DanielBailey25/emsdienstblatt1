@@ -6,10 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -45,5 +46,9 @@ class User extends Authenticatable
 
     public function getLatestCurrentWorker() {
         return CurrentWorker::where('user_id', $this->id)->orderBy('created_at', 'asc')->first();
+    }
+
+    public function hasCourseById($courseId) {
+        return CourseRelation::where(['user_id' => $this->id, 'course_id' => $courseId])->first();
     }
 }

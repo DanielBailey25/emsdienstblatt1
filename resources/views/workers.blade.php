@@ -10,21 +10,13 @@
         <table class="table table-striped table-hover text-white">
             <thead>
                 <tr>
-                <th scope="col">Mitarbeiter</th>
-                <th scope="col">Rank</th>
-                <th scope="col">Dienstnummer</th>
-                <th scope="col">Tel.</th>
-                <th scope="col">EST</th>
-                <th scope="col">IDP</th>
-                <th scope="col">Appro</th>
-                <th scope="col">RTW</th>
-                <th scope="col">RTH</th>
-                <th scope="col">Granger</th>
-                <th scope="col">Funk</th>
-                <th scope="col">Außendienst</th>
-                <th scope="col">Schmerztherapie</th>
-                <th scope="col">ID-Schulung</th>
-                <th scope="col">Großeinsatzschulung</th>
+                    <th scope="col">Mitarbeiter</th>
+                    <th scope="col">Rank</th>
+                    <th scope="col">Dienstnummer</th>
+                    <th scope="col">Tel.</th>
+                    @foreach ($courses as $course)
+                        <th scope="col">{{$course->name}}</th>
+                    @endforeach
                 </tr>
             </thead>
             <tbody>
@@ -34,17 +26,13 @@
                         <td>{{$worker->rank}}</td>
                         <td>{{$worker->service_number}}</td>
                         <td>{{$worker->phone}}</td>
-                        <td><i class="fs-5 bi-check2-circle" style='color: green'></i></td>
-                        <td><i class="fs-5 bi-check2-circle" style='color: green'></i></td>
-                        <td><i class="fs-5 bi-check2-circle" style='color: green'></i></td>
-                        <td><i class="fs-5 bi-check2-circle" style='color: green'></i></td>
-                        <td><i class="fs-5 bi-check2-circle" style='color: green'></i></td>
-                        <td><i class="fs-5 bi-check2-circle" style='color: green'></i></td>
-                        <td><i class="fs-5 bi-check2-circle" style='color: green'></i></td>
-                        <td><i class="fs-5 bi-check2-circle" style='color: green'></i></td>
-                        <td><i class="fs-5 bi-check2-circle" style='color: green'></i></td>
-                        <td><i class="fs-5 bi-x" style='color: red'></i></td>
-                        <td><i class="fs-5 bi-x" style='color: red'></i></td>
+                        @foreach ($courses as $course)
+                            @if ($worker->hasCourseById($course->id))
+                                <td><i class="fs-5 bi-check2-circle" style='color: green'></i></td>
+                            @else
+                                <td><i class="fs-5 bi-x" style='color: red'></i></td>
+                            @endif
+                        @endforeach
                     </tr>
                 @endforeach
             </tbody>
