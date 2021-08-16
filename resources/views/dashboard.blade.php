@@ -22,7 +22,7 @@
                             <div class="card-header bg-primary text-white">{{ $worker->item->name }}<form action={{route('formStartWorker')}} method="POST" id="currentWorkTileButton_{{$worker->id}}">@csrf<input type='hidden' value={{$worker->state_id}} name='state_id'><input type='hidden' value={{$worker->item_id}} name='item_id'><span onclick="getElementById('currentWorkTileButton_{{$worker->id}}').submit();" class="lh-sm badge rounded-pill bg-dark makeClickable assignToCurrentWorkerButton" style="font-size: 12px">Eintragen</span></form></div>
                             <div class="card-body-md">
                                 <div class='table-responsive'>
-                                    <table class="table text-white">
+                                    <table class="table text-white table-nowrap">
                                         <thead>
                                             <tr>
                                                 <th scope="col">R</th>

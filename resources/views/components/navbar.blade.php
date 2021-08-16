@@ -12,11 +12,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('formStopWorker') }}" class="nav-link px-sm-0 px-2">
-                    <i class="fs-5 bi-box-arrow-left text-danger"></i><span class="ms-2 d-none d-sm-inline">Austragen</span>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="{{ route('createAbsence') }}" class="nav-link px-sm-0 px-2">
                     <i class="fs-5 bi-calendar-date"></i><span class="ms-2 d-none d-sm-inline">Abwesenheit einreichen</span>
                 </a>
@@ -44,7 +39,7 @@
                     <i class="fs-5 bi-info-square"></i><span class="ms-2 d-none d-sm-inline">Information</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
-                    <li><a class="dropdown-item" href="{{ route('showAbsences') }}">Freistellungen</a>
+                    <li><a class="dropdown-item" href="{{ route('showAbsences') }}">Abwesenheiten</a>
                     </li>
                     <li><a class="dropdown-item" href="{{ route('events') }}">Termine</a></li>
                     <li><a class="dropdown-item" href="{{ route('news') }}">News</a></li>
@@ -90,6 +85,14 @@
                     </ul>
                 </li>
             @endhasanyrole
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('formStopWorker') }}" class="nav-link px-sm-0 px-2">
+                    <i class="fs-5 bi-box-arrow-left text-danger"></i><span class="ms-2 d-none d-sm-inline">Austragen</span>
+                </a>
+            </li>
         </ul>
         <div class="dropdown py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"

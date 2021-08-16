@@ -16778,7 +16778,7 @@ textarea.form-control-lg {
     height: 100%;
 }
 
-#infobar .card,  #groupedItemSelector .card {
+#infobar .card,  #groupedItemSelector .card, #groupedTypeSelector .card {
     cursor: pointer;
     -webkit-user-select: none;
        -moz-user-select: none;
@@ -16786,7 +16786,7 @@ textarea.form-control-lg {
             user-select: none;
 }
 
-#infobar .card:hover, #groupedItemSelector .card:hover {
+#infobar .card:hover, #groupedItemSelector .card:hover, #groupedTypeSelector .card:hover {
     background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15))
 }
 
@@ -16834,4 +16834,8 @@ textarea.form-control-lg {
 
   .form-control {
     border-color: #525252;
+  }
+
+  .table-nowrap {
+    white-space: nowrap;
   }
