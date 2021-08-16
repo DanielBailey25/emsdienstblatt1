@@ -30,6 +30,22 @@ class CurrentWorker extends Model
     ];
 
     public function stopWorker() {
+        $relatedWorker = CurrentWorker::where('related_id', $this->id)->get();
+
+        // If one related current worker are available, make first one as starter.
+        if($relatedWorker){
+            $newId = null;
+            foreach($relatedWorker as $worker) {
+                if ($newId == null){
+                    $newId = $worker->id;
+                    $worker->related_id = null;
+                    $worker->save();
+                    continue;
+                }
+                $worker->related_id = $newId;
+                $worker->save();
+            }
+        }
         $this->ended_at = Carbon::now()->toDateTimeString();
         $this->save();
     }

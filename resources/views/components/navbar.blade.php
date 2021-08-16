@@ -18,7 +18,7 @@
             </li>
             <li class="nav-item">
                 <a href="{{ route('createAbsence') }}" class="nav-link px-sm-0 px-2">
-                    <i class="fs-5 bi-calendar-date"></i><span class="ms-2 d-none d-sm-inline">Abwesenheit</span>
+                    <i class="fs-5 bi-calendar-date"></i><span class="ms-2 d-none d-sm-inline">Abwesenheit einreichen</span>
                 </a>
             </li>
             <li class="nav-item">

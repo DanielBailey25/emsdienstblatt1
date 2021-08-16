@@ -28,36 +28,66 @@ class CurrentWorkerController extends Controller
             'item_id.required' => 'Ein Auto oder Gebäude muss ausgewählt werden.'
         ]);
 
-        $this->userHaveWorkerAndStop();
-        $itemUsedBy = $this->itemUsedBy($request->input('item_id'));
+        $currentWorkerForUser = $this->getCurrentWorkerForCurrentUser();
+
+        if($currentWorkerForUser && $currentWorkerForUser->item_id == $request->input('item_id')){
+            $currentWorkerForUser->state_id = $request->input('state_id');
+            $currentWorkerForUser->save();
+            return redirect()->route('home');
+        }
+
+        $this->stopCurrentWorkerForUser();
+
+        $this->createCurrentWorker(Auth::user()->id, $request->input('item_id'), $request->input('description'), $request->input('state_id'));
+
+        return redirect()->route('home');
+    }
+
+    public function createCurrentWorker($userId, $itemId, $description, $stateId) {
+        $itemUsedBy = $this->itemUsedBy($itemId);
         if ($itemUsedBy) {
             $related_id = $itemUsedBy->id;
         }
         CurrentWorker::create([
-            'user_id' => Auth::user()->id,
+            'user_id' => $userId,
             'client_id' => Auth::user()->client_id,
             'related_id' => $related_id ?? null,
-            'description' => $request->input('description'),
-            'item_id' => $request->input('item_id'),
-            'state_id' => $request->input('state_id'),
+            'description' => $description,
+            'item_id' => $itemId,
+            'state_id' => $stateId,
         ]);
-        return redirect()->route('home');
     }
 
     public function stopWorker() {
-        $this->userHaveWorkerAndStop();
+        $this->stopCurrentWorkerForUser();
         return redirect()->route('home');
     }
 
-    public function userHaveWorkerAndStop() {
-        $worker = CurrentWorker::where(['user_id'=> Auth::user()->id, 'ended_at'=> null])->first();
+    public function stopCurrentWorkerForUser() {
+        $worker = $this->getCurrentWorkerForCurrentUser();
         if ($worker) {
             $worker->stopWorker();
         }
     }
 
+    public function getCurrentWorkerForCurrentUser() {
+        return CurrentWorker::where(['user_id'=> Auth::user()->id, 'ended_at'=> null])->first();
+    }
+
     public function itemUsedBy($itemId) {
         $worker = CurrentWorker::where(['item_id'=> $itemId, 'ended_at'=> null])->first();
         return $worker;
+    }
+
+    public function startWorkerForInterns(Request $request) {
+        $request->validate(
+            ['intern_id' => 'required']
+        );
+
+        $worker = $this->getCurrentWorkerForCurrentUser();
+
+        $this->createCurrentWorker($request->input('intern_id'), $worker->item_id, 'Prakti', $worker->state_id);
+
+        return redirect()->route('home');
     }
 }

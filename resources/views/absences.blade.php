@@ -25,8 +25,8 @@
                             @foreach ($absenceType->absences() as $absence)
                                 <tr>
                                     <th scope="row">{{$absence->user->name}}</th>
-                                    <td>{{$absence->from}}</td>
-                                    <td>{{$absence->to}}</td>
+                                    <td>{{$absence->readableStartDate()}}</td>
+                                    <td>{{$absence->readableEndDate()}}</td>
                                     @if ($absence->approvedBy)
                                     <td><span class="badge rounded-pill bg-success">{{$absence->approvedBy->name}}</span></td>
                                     @elseif($absence->id != 2)

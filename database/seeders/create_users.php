@@ -42,8 +42,44 @@ class create_users extends Seeder
             'client_id' => 1,
             'password' => Hash::make('einfach'),
         ]);
+        DB::table('users')->insert([
+            'name' => 'Max_Mustermann',
+            'rank' => 0,
+            'service_number' => 13,
+            'phone' => 573832,
+            'client_id' => 1,
+            'password' => Hash::make('einfach'),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Tester_Einfach',
+            'rank' => 2,
+            'service_number' => 14,
+            'phone' => 573832,
+            'client_id' => 1,
+            'password' => Hash::make('einfach'),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Peter_Muster',
+            'rank' => 5,
+            'service_number' => 16,
+            'phone' => 573832,
+            'client_id' => 1,
+            'password' => Hash::make('einfach'),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Gunther_Meisel',
+            'rank' => 5,
+            'service_number' => 55,
+            'phone' => 573832,
+            'client_id' => 1,
+            'password' => Hash::make('einfach'),
+        ]);
         User::find(1)->assignRole('Admin');
         User::find(2)->assignRole('Editor');
         User::find(3)->assignRole('Benutzer');
+        User::find(4)->assignRole('Benutzer');
+        User::find(5)->assignRole('Benutzer');
+        User::find(6)->assignRole('Benutzer');
+        User::find(7)->assignRole('Benutzer');
     }
 }

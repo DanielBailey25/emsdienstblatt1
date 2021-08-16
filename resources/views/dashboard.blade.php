@@ -8,7 +8,6 @@
     <div class="py-4 col d-flex flex-column h-sm-100">
 
         @include('components.infobar')
-
         <div class="row row-cols-auto py-4">
             @if($currentWorker->count() == 0)
                 <div class="col-md">
@@ -18,7 +17,7 @@
                 </div>
             @else
                 @foreach($currentWorker as $worker)
-                    <div class="col-md ms-auto mb-4">
+                    <div class="col-12 col-lg-6 col-md-12 col-xl-6 col-xxl-4 mb-4">
                         <div class="card bg-light">
                             <div class="card-header bg-primary text-white">{{ $worker->item->name }}<form action={{route('formStartWorker')}} method="POST" id="currentWorkTileButton_{{$worker->id}}">@csrf<input type='hidden' value={{$worker->state_id}} name='state_id'><input type='hidden' value={{$worker->item_id}} name='item_id'><span onclick="getElementById('currentWorkTileButton_{{$worker->id}}').submit();" class="lh-sm badge rounded-pill bg-dark makeClickable assignToCurrentWorkerButton" style="font-size: 12px">Eintragen</span></form></div>
                             <div class="card-body-md">

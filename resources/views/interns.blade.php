@@ -14,6 +14,7 @@
                 <th scope="col">Dienstnummer</th>
                 <th scope="col">Tel.</th>
                 <th scope="col">Zuletzt mitgenommen:</th>
+                <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -27,6 +28,7 @@
                         @else
                             <td></td>
                         @endif
+                        <td><form action="{{route('interns')}}" method="POST">@csrf<input type="hidden" value="{{$intern->id}}" name="intern_id"><button type="submit" class="btn btn-primary text-white">mitnehmen</button></form></td>
                     </tr>
                 @endforeach
             </tbody>

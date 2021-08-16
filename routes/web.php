@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/events', [App\Http\Controllers\EventsController::class, 'index'])->name('events');
         // Route::get('/absences', [App\Http\Controllers\AbsenceController::class, 'showAbsences'])->name('showAbsences');
         Route::get('/interns', [App\Http\Controllers\WorkersController::class, 'showInterns'])->name('interns');
+        Route::post('/interns', [App\Http\Controllers\CurrentWorkerController::class, 'startWorkerForInterns'])->name('interns');
         Route::get('/training/{id}', [App\Http\Controllers\TrainingsController::class, 'showTraining'])->name('training');
         Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news');
         Route::get('/nordmap', [App\Http\Controllers\NordmapController::class, 'index'])->name('nordmap');

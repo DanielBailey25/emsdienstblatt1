@@ -36,7 +36,7 @@ class AbsenceController extends Controller
         ]);
 
         $from = Carbon::parse($request->start_date . ' ' . $request->start_time ?? '00:00');
-        $to = Carbon::parse($request->end_date . ' ' . $request->end_time ?? '00:00');
+        $to = Carbon::parse($request->end_date . ' ' . $request->end_time ?? '23:59');
 
         Absence::create([
             'from' => $from->toDateTimeString(),
