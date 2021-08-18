@@ -30,7 +30,7 @@
                             @if ($worker->hasCourseById($course->id))
                                 <td><i class="fs-5 bi-check2-circle" style='color: green'></i></td>
                             @else
-                                <td><i class="fs-5 bi-x" style='color: red'></i></td>
+                                <td><i class="fs-5 bi-x-circle" style='color: red'></i></td>
                             @endif
                         @endforeach
                     </tr>

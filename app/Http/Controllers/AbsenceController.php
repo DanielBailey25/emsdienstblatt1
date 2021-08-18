@@ -15,9 +15,9 @@ class AbsenceController extends Controller
     }
 
     public function showAbsences() {
-        $absenceTypes = AbsenceType::whereIn('id', [1,2,3])->get();
+        $absences = Absence::whereIn('absence_type_id', [1,2,3])->whereDate('to', '>=', Carbon::today()->toDateString())->get();
 
-        return view('absences', ['absenceTypes' => $absenceTypes]);
+        return view('absences', ['absences' => $absences]);
     }
 
     public function createAbsence(Request $request) {
@@ -35,8 +35,14 @@ class AbsenceController extends Controller
             'end_time' => 'Bis Uhrzeit',
         ]);
 
-        $from = Carbon::parse($request->start_date . ' ' . $request->start_time ?? '00:00');
-        $to = Carbon::parse($request->end_date . ' ' . $request->end_time ?? '23:59');
+        if ($request->start_time == null || $request->start_time == null) {
+            $request->start_time = '00:00';
+        }
+        if ($request->end_time == null || $request->time_added == null) {
+            $request->end_time = '23:59';
+        }
+        $from = Carbon::parse($request->start_date . ' ' . $request->start_time);
+        $to = Carbon::parse($request->end_date . ' ' . $request->end_time);
 
         Absence::create([
             'from' => $from->toDateTimeString(),

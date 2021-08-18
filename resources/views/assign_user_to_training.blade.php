@@ -15,6 +15,11 @@
                         @endforeach
                     </div>
                 @endif
+                @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session()->get('message') }}
+                    </div>
+                @endif
                 <div class="card bg-light py-3 px-3">
                     <h1 class='fs-3'>Ausbildung freischalten</h1>
                     <div class="card-body">

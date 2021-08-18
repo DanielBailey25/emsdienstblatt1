@@ -52,7 +52,7 @@ class TrainingsController extends Controller
                 $user->givePermissionTo($permission);
             }
         }
-        return redirect()->route('unlockTrainingView');
+        return redirect()->route('unlockTrainingView')->with('message', 'Der Ausbildungskurs wurde für die ausgewählten Benutzer freigegeben.');
     }
 
     public function showTraining($id) {

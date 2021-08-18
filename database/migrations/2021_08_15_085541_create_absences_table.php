@@ -20,6 +20,7 @@ class CreateAbsencesTable extends Migration
             $table->timestamp('from');
             $table->timestamp('to');
             $table->boolean('time_included');
+            $table->boolean('is_approved')->nullable();
             $table->foreignIdFor(AbsenceType::class);
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(User::class, 'approved_by_id')->nullable();

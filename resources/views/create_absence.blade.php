@@ -44,10 +44,10 @@
                           <input type="date" class="form-control" id="selectEndDate" name="end_date" value="{{old('end_date')}}">
                         </div>
                         <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="addTime" name="time_added">
+                            <input type="checkbox" class="form-check-input" id="addTime" name="time_added" {{ old('time_added') == 'on' ? 'checked' : '' }}>
                             <label class="form-check-label" for="addTime">Uhrzeit angeben</label>
                           </div>
-                        <div id="timeBlock" class="d-none">
+                        <div id="timeBlock" class="{{ old('time_added') == 'on' ? '' : 'd-none' }}">
                             <div class="mb-3">
                                 <label for="selectStartTime" class="form-label">Ab Uhrzeit</label>
                                 <input type="time" class="form-control" id="selectStartTime" name="start_time" value="{{old('start_time')}}">
