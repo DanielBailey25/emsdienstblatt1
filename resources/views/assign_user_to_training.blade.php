@@ -43,7 +43,7 @@
                                 </select>
                             </div>
                             <div class="form-group mt-4">
-                                <input type="submit" class="btn btn-info" name="submit" value="Submit" />
+                                <input type="submit" class="btn btn-primary text-white" name="submit" value="Freischalten" />
                             </div>
                         </form>
                     </div>

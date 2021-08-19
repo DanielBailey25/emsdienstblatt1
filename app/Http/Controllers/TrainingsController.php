@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Training;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
@@ -56,6 +57,13 @@ class TrainingsController extends Controller
     }
 
     public function showTraining($id) {
-        return view('training', ['training' => Training::find($id)]);
+        try {
+            if (User::find(Auth::user()->id)->hasPermissionTo('call training_' . $id)) {
+                return view('training', ['training' => Training::find($id)]);
+            }
+        } catch(Exception $e) {
+
+        }
+        return redirect()->route('home');
     }
 }

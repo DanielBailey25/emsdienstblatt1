@@ -82,6 +82,7 @@
                             {{-- <li><a class="dropdown-item" href="#">Gebäude / Fahrzeuge</a></li> --}}
                         @endhasrole
                         <li><a class="dropdown-item" href="{{route('unlockTrainingView')}}">Ausbildungen freischalten</a></li>
+                        <li><a class="dropdown-item" href="{{route('addNews')}}">News hinzufügen</a></li>
                     </ul>
                 </li>
             @endhasanyrole

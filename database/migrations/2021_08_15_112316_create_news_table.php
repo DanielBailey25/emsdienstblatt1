@@ -18,7 +18,7 @@ class CreateNewsTable extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('content', 255);
+            $table->string('content', 500);
             $table->boolean('is_important');
             $table->timestamp('expire_at');
             $table->foreignIdFor(NewsCategory::class);

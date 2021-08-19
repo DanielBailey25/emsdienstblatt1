@@ -19,7 +19,7 @@ class CreateEventsTable extends Migration
             $table->foreignIdFor(User::class, 'receiver_id');
             $table->foreignIdFor(User::class, 'sender_id');
             $table->string('location');
-            $table->boolean('is_accepted');
+            $table->boolean('is_accepted')->nullable();
             $table->timestamp('datetime');
             $table->timestamps();
         });

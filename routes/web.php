@@ -41,6 +41,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/absences', [App\Http\Controllers\AbsenceController::class, 'showAbsences'])->name('showAbsences');
         Route::get('/bans', [App\Http\Controllers\BansController::class, 'index'])->name('bans');
         Route::get('/events', [App\Http\Controllers\EventsController::class, 'index'])->name('events');
+        Route::get('/add/events', [App\Http\Controllers\EventsController::class, 'createEventView'])->name('createEvent');
+        Route::post('/add/events', [App\Http\Controllers\EventsController::class, 'createEvent'])->name('createEvent');
         // Route::get('/absences', [App\Http\Controllers\AbsenceController::class, 'showAbsences'])->name('showAbsences');
         Route::get('/interns', [App\Http\Controllers\WorkersController::class, 'showInterns'])->name('interns');
         Route::post('/interns', [App\Http\Controllers\CurrentWorkerController::class, 'startWorkerForInterns'])->name('interns');
@@ -61,6 +63,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::prefix('admin')->group(function () {
             Route::get('/unlock/training', [App\Http\Controllers\TrainingsController::class, 'unlockTrainingView'])->name('unlockTrainingView');
             Route::post('/unlock/training', [App\Http\Controllers\TrainingsController::class, 'unlockTrainingForUsers'])->name('unlockTrainingForUsers');
+            Route::get('/add/news', [App\Http\Controllers\NewsController::class, 'addNewsView'])->name('addNews');
+            Route::post('/add/news', [App\Http\Controllers\NewsController::class, 'addNews'])->name('addNews');
         });
     });
 

@@ -30,9 +30,7 @@ class CurrentWorkerController extends Controller
 
         $currentWorkerForUser = $this->getCurrentWorkerForCurrentUser();
 
-        if($currentWorkerForUser && $currentWorkerForUser->item_id == $request->input('item_id')){
-            $currentWorkerForUser->state_id = $request->input('state_id');
-            $currentWorkerForUser->save();
+        if($currentWorkerForUser && $currentWorkerForUser->item_id == $request->input('item_id') && $currentWorkerForUser->state_id == $request->input('state_id')){
             return redirect()->route('home');
         }
 

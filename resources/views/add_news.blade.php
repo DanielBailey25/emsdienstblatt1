@@ -21,17 +21,25 @@
                     </div>
                 @endif
                 <div class="card bg-light py-3 px-3">
-                    <h1 class='fs-3'>Ausbildung hinzufügen</h1>
+                    <h1 class='fs-3'>News hinzufügen</h1>
                     <div class="card-body">
-                        <form method="POST" action="{{route('createTraining')}}">
+                        <form method="POST" action="{{route('addNews')}}">
                             @csrf
                             <div class="form-group mt-2">
-                                <label for="title">Titel</label>
-                                <input value="{{old('title')}}" class="form-control bg-light" name="title" rows="1">
+                                <label>Kategorie auswählen</label>
+                                <select id="category" name="category" class="form-control bg-light">
+                                    @foreach ($newsCategories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group mt-2">
-                                <label for="url">iFrame-URL</label>
-                                <input value="{{old('url')}}"  class="form-control bg-light" name="url"  rows="1">
+                                <label>Titel</label>
+                                <input value="{{old('title')}}" class="form-control bg-light" name="title" id="title" rows="1" max="255">
+                            </div>
+                            <div class="form-group mt-2">
+                                <label>Inhalt</label>
+                                <textarea value="{{old('content')}}" class="form-control bg-light" name="content" id="content" rows="3" maxlength="500"></textarea>
                             </div>
                             <div class="form-group mt-4">
                                 <input type="submit" class="btn btn-primary text-white" name="submit" value="Erstellen" />

@@ -17,7 +17,16 @@
                         @endif
                         <div class="card-body">
                             @if ($category->getActiveRelatedNews()->count() > 0)
-                                Es gibt News, aber diese Anzeige funktioniert noch nicht.
+                                @foreach ($category->getActiveRelatedNews() as $news)
+                                    <h1 class="text-white fs-3">{{$news->title}}</h1>
+                                    <div class="text-white-50 fs-7 mb-2">
+                                        von: {{$news->creator->name}}, {{$news->readableStartedAt()}}
+                                    </div>
+                                    <div class="text-white fs-5">
+                                        {{$news->content}}
+                                    </div>
+                                    <hr/>
+                                @endforeach
                             @else
                                 <div class="alert alert-info">
                                     Es gibt zurzeit keine Neuigkeiten für diesen Bereich.

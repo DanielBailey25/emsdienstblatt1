@@ -12,9 +12,9 @@ class NewsCategory extends Model
     use HasFactory;
 
     public function getActiveRelatedNews() {
-        return News::where(function($q) {
+        return News::where('news_category_id', $this->id)->where(function($q) {
             $q->whereDate('expire_at', Carbon::now()->toDateTimeString())
-              ->orWhere('expire_at', null);
+              ->orWhere('expire_at', '0000-00-00 00:00:00');
         })->get();
     }
 }

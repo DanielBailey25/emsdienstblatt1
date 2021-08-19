@@ -23,7 +23,7 @@ class AbsenceController extends Controller
     public function createAbsence(Request $request) {
         $request->validate([
             'absence_type' => 'required',
-            'start_date' => 'required | date',
+            'start_date' => 'required | date | after:yesterday',
             'end_date' => 'required | date | after_or_equal:start_date',
             'time_added' => 'nullable',
             'start_time' => 'nullable | date_format:"H:i"',
