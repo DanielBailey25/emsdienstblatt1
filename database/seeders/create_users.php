@@ -36,7 +36,28 @@ class create_users extends Seeder
         DB::table('users')->insert([
             'name' => 'Sam Lange',
             'rank' => 0,
-            'player_id' => 291,
+            'player_id' => 2941,
+            'client_id' => 1,
+            'password' => Hash::make('einfach'),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Sam Lange2',
+            'rank' => 0,
+            'player_id' => 2931,
+            'client_id' => 1,
+            'password' => Hash::make('einfach'),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Sam Lange3',
+            'rank' => 0,
+            'player_id' => 2921,
+            'client_id' => 1,
+            'password' => Hash::make('einfach'),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Sam Lange4',
+            'rank' => 0,
+            'player_id' => 2911,
             'client_id' => 1,
             'password' => Hash::make('einfach'),
         ]);

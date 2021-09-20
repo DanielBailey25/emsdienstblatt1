@@ -30,7 +30,7 @@ class CurrentWorker extends Model
     ];
 
     public function stopWorker() {
-        $relatedWorker = CurrentWorker::where('related_id', $this->id)->get();
+        $relatedWorker = CurrentWorker::where(['related_id' => $this->id, 'ended_at' => null])->get();
 
         // If one related current worker are available, make first one as starter.
         $relatedId = null;
