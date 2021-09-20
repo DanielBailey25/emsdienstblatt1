@@ -89,4 +89,20 @@ class UserController extends Controller
         $request->user()->save();
         return redirect()->route('profile')->with('message', 'Deine Telefonnummer wurde erfolgreich geändert');
     }
+
+    public function changeRole(Request $request) {
+        $request->validate([
+            'user_id' => 'required',
+            'role' => 'required',
+        ]);
+
+        $user = User::find($request->user_id);
+
+        try {
+            $user->syncRoles($request->input('role'));
+        } catch (Exception $e) {
+            throw $e;
+        }
+        $user->save();
+    }
 }

@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/absence', [App\Http\Controllers\AbsenceController::class, 'createAbsence'])->name('formCreateAbsence');
         Route::post('/changePassword', [App\Http\Controllers\UserController::class, 'changePassword'])->name('changePassword');
         Route::post('/changeInformation', [App\Http\Controllers\UserController::class, 'changeInformation'])->name('changeInformation');
+        Route::post('/changeRole', [App\Http\Controllers\UserController::class, 'changeRole'])->name('changeRole');
     });
 
     Route::get('/workers', [App\Http\Controllers\WorkersController::class, 'index'])->name('workers');

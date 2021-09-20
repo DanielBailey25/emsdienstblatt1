@@ -31,7 +31,7 @@ class create_users extends Seeder
             'player_id' => 3947,
             'client_id' => 1,
             'is_admin' => true,
-            'password' => Hash::make('Mffaug_26$'),
+            'password' => Hash::make('einfach'),
         ]);
         DB::table('users')->insert([
             'name' => 'Sam Lange',
