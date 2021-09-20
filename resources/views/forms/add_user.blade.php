@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="form-group mt-2">
                                     <label for="name">Telefonnummer</label>
-                                    <input type="number" class="form-control bg-light" value="{{old('phone')}}" name="phone" rows="1">
+                                    <input type="number" class="form-control bg-light" value="{{old('phone')}}" name="text" rows="1">
                                 </div>
                                 <div class="form-group col-md-6 mt-2">
                                     <label for="role">Rolle auswählen</label>

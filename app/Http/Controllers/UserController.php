@@ -32,7 +32,7 @@ class UserController extends Controller
             'password' => 'required | min:6',
             'rank' => 'required | integer',
             'player_id' => 'required | integer | unique:users,player_id,id',
-            'phone' => 'nullable | integer',
+            'phone' => 'nullable | max:9',
             'role' => 'required',
         ],[], [
             'name' => 'Name',
