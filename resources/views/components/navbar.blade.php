@@ -87,7 +87,7 @@
         <div class="dropdown py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                 id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png"
+                <img src="https://pbs.twimg.com/media/DkqIyk5XoAAAK6i.jpg"
                     alt="hugenerd" width="28" height="28" class="rounded-circle">
                 <span class="d-none d-sm-inline mx-2">{{ Auth::user()->name }}</span>
             </a>

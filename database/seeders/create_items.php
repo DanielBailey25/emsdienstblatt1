@@ -34,5 +34,10 @@ class create_items extends Seeder
             'client_id' => 1,
             'item_type_id' => 10,
         ]);
+        DB::table('items')->insert([
+            'name' => 'Human Labs',
+            'client_id' => 1,
+            'item_type_id' => 10,
+        ]);
     }
 }

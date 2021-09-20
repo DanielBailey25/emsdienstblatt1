@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/switchItemClosedState', [App\Http\Controllers\DashboardController::class, 'switchItemClosedState'])->name('switchItemClosedState');
         Route::post('/centerChangeAssignment', [App\Http\Controllers\DashboardController::class, 'centerChangeAssignment'])->name('centerChangeAssignment');
         Route::post('/absence', [App\Http\Controllers\AbsenceController::class, 'createAbsence'])->name('formCreateAbsence');
+        Route::post('/changePassword', [App\Http\Controllers\UserController::class, 'changePassword'])->name('changePassword');
     });
 
     Route::get('/workers', [App\Http\Controllers\WorkersController::class, 'index'])->name('workers');

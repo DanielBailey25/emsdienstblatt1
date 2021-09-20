@@ -38,6 +38,10 @@
     background-color: #DA0037 !important;
   }
 
+  .bg-orange {
+    background-color: #f6993f !important;
+  }
+
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }

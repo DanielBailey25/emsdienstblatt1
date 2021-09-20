@@ -19,4 +19,8 @@ class Item extends Model
     protected $fillable = [
         'is_closed',
     ];
+
+    public function type() {
+        return $this->belongsTo(ItemType::class, 'item_type_id');
+    }
 }

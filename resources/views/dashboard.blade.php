@@ -19,7 +19,7 @@
                 @foreach($currentWorker as $worker)
                     <div class="col-12 col-lg-6 col-md-12 col-xl-6 col-xxl-4 mb-4">
                         <div class="card bg-light">
-                            <div class="card-header bg-primary text-white">{{ $worker->item->name }}<form action={{route('formStartWorker')}} method="POST" id="currentWorkTileButton_{{$worker->id}}">@csrf<input type='hidden' value={{$worker->state_id}} name='state_id'><input type='hidden' value={{$worker->item_id}} name='item_id'><span onclick="getElementById('currentWorkTileButton_{{$worker->id}}').submit();" class="lh-sm badge rounded-pill bg-dark makeClickable assignToCurrentWorkerButton" style="font-size: 12px">Eintragen</span></form></div>
+                            <div class="card-header @if($worker->item->type->id == 1) bg-primary @elseif($worker->item->id ==4) bg-danger @else bg-orange @endif text-white">{{ $worker->item->name }}<form action={{route('formStartWorker')}} method="POST" id="currentWorkTileButton_{{$worker->id}}">@csrf<input type='hidden' value={{$worker->state_id}} name='state_id'><input type='hidden' value={{$worker->item_id}} name='item_id'><span onclick="getElementById('currentWorkTileButton_{{$worker->id}}').submit();" class="lh-sm badge rounded-pill bg-dark makeClickable assignToCurrentWorkerButton" style="font-size: 12px">Eintragen</span></form></div>
                             <div class="card-body-md">
                                 <div class='table-responsive'>
                                     <table class="table text-white table-nowrap">
@@ -28,12 +28,12 @@
                                                 <th scope="col">R</th>
                                                 <th scope="col">E-ID</th>
                                                 <th scope="col">Name</th>
-                                                <th scope="col">Info</th>
+                                                <th scope="col">Code</th>
                                                 <th scope="col">Beginn</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if ($worker->user->rank == 0)
+                                            @if ($worker->state->id == 5)
                                               <tr class="table-danger">
                                             @else
                                               <tr>
@@ -41,11 +41,11 @@
                                                 <th>{{ $worker->user->rank }}</th>
                                                 <td>{{ $worker->user->player_id }}</td>
                                                 <td>{{ $worker->user->name }}</td>
-                                                <td>{{ $worker->description }}</td>
+                                                <td>{{ $worker->state->name }}</td>
                                                 <td>{{ $worker->readableStartedAtDiff() }}</td>
                                             </tr>
                                             @foreach ($worker->related() as $subWorker)
-                                            @if ($subWorker->user->rank == 0)
+                                            @if ($subWorker->state->id == 5)
                                                 <tr class="table-danger">
                                             @else
                                                 <tr>
@@ -53,7 +53,7 @@
                                                 <th>{{ $subWorker->user->rank }}</th>
                                                 <td>{{ $subWorker->user->player_id }}</td>
                                                 <td>{{ $subWorker->user->name }}</td>
-                                                <td>{{ $subWorker->name }}</td>
+                                                <td>{{ $subWorker->state->name }}</td>
                                                 <td>{{ $subWorker->readableStartedAtDiff() }}</td>
                                             </tr>
                                             @endforeach

@@ -15,8 +15,8 @@ class create_states extends Seeder
     public function run()
     {
         DB::table('states')->insert([
-            'name' => 'Besetzt',
-            'description' => 'Aktiv besetzt.',
+            'name' => 'Aktiv',
+            'description' => 'Besetzt.',
             'client_id' => 1,
         ]);
         DB::table('states')->insert([
@@ -29,11 +29,11 @@ class create_states extends Seeder
             'client_id' => 1,
         ]);
         DB::table('states')->insert([
-            'name' => 'Mitarbeitereinweisung',
+            'name' => 'Einweisung',
             'client_id' => 1,
         ]);
         DB::table('states')->insert([
-            'name' => '10-9 (nicht anwesend)',
+            'name' => '10-9',
             'client_id' => 1,
         ]);
     }

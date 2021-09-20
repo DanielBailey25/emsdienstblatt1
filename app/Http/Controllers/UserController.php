@@ -64,4 +64,19 @@ class UserController extends Controller
 
         return redirect()->route('users')->with('message', 'Der Nutzer ' . $request->input('name') . ' wurde erfolgreich erstellt.');
     }
+
+    public function changePassword(Request $request) {
+        $request->validate([
+            'old_pw' => 'required | password',
+            'new_pw' => 'required | min:6',
+            'repeat_new_pw' => 'required | same:new_pw',
+        ],[], [
+            'new_pw' => 'Neues Passwort',
+            'repeat_new_pw' => 'Neues Passwort wiederholen'
+        ]);
+
+        $request->user()->password = Hash::make($request->new_pw);
+        $request->user()->save();
+        return redirect()->route('profile')->with('message', 'Dein Passwort wurde erfolgreich geändert');
+    }
 }
