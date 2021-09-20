@@ -12,7 +12,7 @@ return [
     | ATTENTION: Please only enable autologin with authenticated protection
     |
     */
-    'autologin' => true,
+    'autologin' => (env('APP_ENV', 'production') === 'production') ? false : true,
 
     /*
     |--------------------------------------------------------------------------

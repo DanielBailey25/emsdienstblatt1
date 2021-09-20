@@ -39,10 +39,6 @@
                 <a href="{{ route('showAbsences') }}" class="nav-link px-sm-0 px-2">
                     <i class="fs-5 bi-cloud-sun"></i><span class="ms-2 d-none d-sm-inline">Abwesenheiten</span> </a>
             </li>
-            <li>
-                <a href="{{ route('bans') }}" class="nav-link px-sm-0 px-2">
-                    <i class="fs-5 bi-shield-fill-exclamation"></i><span class="ms-2 d-none d-sm-inline">Hausverbote</span> </a>
-            </li>
             @if ($trainings->count() > 0)
                 <li class="dropdown">
                     <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown" data-bs-toggle="dropdown"
