@@ -40,6 +40,7 @@
                                 <div class="form-group mt-2">
                                     <label for="name">Telefonnummer</label>
                                     <input type="number" class="form-control bg-light" value="{{old('phone')}}" name="text" rows="1">
+                                    <div class="form-text">Bitte im folgenden Format angeben: 12-34-567. Kann auch leer bleiben, falls der Mitarbeiter keine Sim-Karte besitzt.</div>
                                 </div>
                                 <div class="form-group col-md-6 mt-2">
                                     <label for="role">Rolle auswählen</label>

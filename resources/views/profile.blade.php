@@ -7,6 +7,20 @@
 
     <div class="col d-flex flex-column h-sm-100">
         <div class='row py-4'>
+            <div class="container">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </div>
+                @endif
+                @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session()->get('message') }}
+                    </div>
+                @endif
+            </div>
             <div class='col-md-6'>
                 <div class='card bg-grey'>
                     <div class='card-body'>
@@ -22,18 +36,6 @@
             <div class='col-md-6'>
                 <div class='card bg-grey'>
                     <div class='card-body'>
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </div>
-                        @endif
-                        @if(session()->has('message'))
-                            <div class="alert alert-success">
-                                {{ session()->get('message') }}
-                            </div>
-                        @endif
                         <form method="POST" action="{{route('changePassword')}}">
                             @csrf
                             <div class="mb-3">
@@ -57,19 +59,19 @@
                 <div class='card bg-grey'>
                     <div class='card-body'>
                         <div class="row">
-                            <div class="col-6">
-                                Telefonnummer:
-                            </div>
-                            <div class="col-6">
-                                {{$user->phone}}
-                            </div>
-                            <div class="dropdown-divider bg-light"></div>
-                            <div class="col-6">
-                                Stunden / Woche:
-                            </div>
-                            <div class="col-6">
-                                N/A
-                            </div>
+                            <form method="POST" action="{{route('changeInformation')}}">
+                                @csrf
+                                <div class="col-6">
+                                    Telefonnummer:
+                                </div>
+                                <div class="col-6">
+                                    <input required class="form-control" type="text" name="phone" value="{{$user->phone}}">
+                                    <div class="form-text">Bitte im folgenden Format angeben: 12-34-567</div>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <button type="submit" class="btn btn-primary text-white">Ändern</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

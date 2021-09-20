@@ -32,7 +32,7 @@ class UserController extends Controller
             'password' => 'required | min:6',
             'rank' => 'required | integer',
             'player_id' => 'required | integer | unique:users,player_id,id',
-            'phone' => 'nullable | max:9',
+            'phone' => 'nullable | required | regex:/\d{2}-\d{2}-\d{3}/ | min:9',
             'role' => 'required',
         ],[], [
             'name' => 'Name',
@@ -78,5 +78,15 @@ class UserController extends Controller
         $request->user()->password = Hash::make($request->new_pw);
         $request->user()->save();
         return redirect()->route('profile')->with('message', 'Dein Passwort wurde erfolgreich geändert');
+    }
+
+    public function changeInformation(Request $request) {
+        $request->validate([
+            'phone' => 'required | regex:/\d{2}-\d{2}-\d{3}/ | min:9',
+        ]);
+
+        $request->user()->phone = $request->phone;
+        $request->user()->save();
+        return redirect()->route('profile')->with('message', 'Deine Telefonnummer wurde erfolgreich geändert');
     }
 }

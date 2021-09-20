@@ -79,24 +79,4 @@ class CurrentWorkerController extends Controller
         $worker = CurrentWorker::where(['item_id'=> $itemId, 'ended_at'=> null])->first();
         return $worker;
     }
-
-    public function startWorkerForInterns(Request $request) {
-        $request->validate(
-            ['intern_id' => 'required']
-        );
-
-        $worker = $this->getCurrentWorkerForCurrentUser();
-
-        $oldInternsWorker = $this->getCurrentWorkerByUserId($request->input('intern_id'));
-
-        if ($oldInternsWorker) {
-            // Show review form
-            $oldInternsWorker->stopWorker();
-        }
-
-
-        $this->createCurrentWorker($request->input('intern_id'), $worker->item_id, 'Prakti', $worker->state_id);
-
-        return redirect()->route('home');
-    }
 }
