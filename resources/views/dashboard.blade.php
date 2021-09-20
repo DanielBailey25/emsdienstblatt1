@@ -26,10 +26,9 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">R</th>
-                                                <th scope="col">DN</th>
+                                                <th scope="col">E-ID</th>
                                                 <th scope="col">Name</th>
                                                 <th scope="col">Info</th>
-                                                <th scope="col">Code</th>
                                                 <th scope="col">Beginn</th>
                                             </tr>
                                         </thead>
@@ -40,10 +39,9 @@
                                               <tr>
                                             @endif
                                                 <th>{{ $worker->user->rank }}</th>
-                                                <td>{{ $worker->user->service_number }}</td>
+                                                <td>{{ $worker->user->player_id }}</td>
                                                 <td>{{ $worker->user->name }}</td>
                                                 <td>{{ $worker->description }}</td>
-                                                <td>{{ $worker->state->name }}</td>
                                                 <td>{{ $worker->readableStartedAtDiff() }}</td>
                                             </tr>
                                             @foreach ($worker->related() as $subWorker)
@@ -53,10 +51,9 @@
                                                 <tr>
                                             @endif
                                                 <th>{{ $subWorker->user->rank }}</th>
-                                                <td>{{ $subWorker->user->service_number }}</td>
+                                                <td>{{ $subWorker->user->player_id }}</td>
                                                 <td>{{ $subWorker->user->name }}</td>
                                                 <td>{{ $subWorker->name }}</td>
-                                                <td>{{ $subWorker->state->name }}</td>
                                                 <td>{{ $subWorker->readableStartedAtDiff() }}</td>
                                             </tr>
                                             @endforeach

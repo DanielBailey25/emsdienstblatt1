@@ -16,10 +16,6 @@
                             <th scope="col">Von</th>
                             <th scope="col">Bis</th>
                             <th scope="col">Status</th>
-                            @role('Admin')
-                                <th scope="col">Ablehnen</th>
-                                <th scope="col">Bestätigen</th>
-                            @endrole
                         </tr>
                     </thead>
                     <tbody>
@@ -28,19 +24,7 @@
                                 <th scope="row">{{$absence->user->name}}</th>
                                 <td>{{$absence->readableStartDate()}}</td>
                                 <td>{{$absence->readableEndDate()}}</td>
-                                @if ($absence->approvedBy)
-                                    <td><span class="badge rounded-pill bg-success">{{$absence->approvedBy->name}}</span></td>
-                                @elseif($absence->absence_type_id != 2)
-                                    <td><span class="badge rounded-pill bg-primary">noch nicht bestätigt</span></td>
-                                @elseif($absence->is_approved === false)
-                                    <td><span class="badge rounded-pill bg-danger">abgelehnt</span></td>
-                                @else
-                                    <td><span class="badge rounded-pill bg-success">bestätigt</span></td>
-                                @endif
-                                @role('Admin')
-                                    <td><button type="button" class="btn btn-default btn-sm" onclick="deleteItem(${curID})"><i class="fs-5 bi-x-circle text-danger"></i></button></td>
-                                    <td><button type="button" class="btn btn-default btn-sm" onclick="deleteItem(${curID})"><i class="fs-5 bi-check-circle text-success"></i></button></td>
-                                @endrole
+                                <td><span class="badge rounded-pill bg-success">bestätigt</span></td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -62,10 +62,7 @@
                 </select>
             </div>
 
-            <div class="form-group mt-2">
-                <label for="addDescription">Beschreibung</label>
-                <input value="{{old('description')}}" class="form-control bg-light" name="description" id="description" rows="1">
-            </div>
+            
             <div class="col-12 mt-3 mb-5">
                 <button type="submit" class="btn btn-primary text-white">Eintragen</button>
             </div>

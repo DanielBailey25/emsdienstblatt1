@@ -15,18 +15,8 @@ class create_states extends Seeder
     public function run()
     {
         DB::table('states')->insert([
-            'name' => 'Außendienst',
-            'description' => 'Aktiv im Außendienst unterwegs',
-            'client_id' => 1,
-        ]);
-        DB::table('states')->insert([
-            'name' => 'Innendienst',
-            'description' => 'Aktiv im Innendienst unterwegs',
-            'client_id' => 1,
-        ]);
-        DB::table('states')->insert([
-            'name' => 'Code 7',
-            'description' => 'Break/Pause/Kopfschmerzen',
+            'name' => 'Besetzt',
+            'description' => 'Aktiv besetzt.',
             'client_id' => 1,
         ]);
         DB::table('states')->insert([
@@ -35,41 +25,15 @@ class create_states extends Seeder
             'client_id' => 1,
         ]);
         DB::table('states')->insert([
-            'name' => 'Einsatz',
-            'client_id' => 1,
-        ]);
-        DB::table('states')->insert([
-            'name' => 'Event',
-            'client_id' => 1,
-        ]);
-        DB::table('states')->insert([
-            'name' => 'EHK',
-            'description' => 'im Erste Hilfe Kurs evtl nicht im Funk',
-            'client_id' => 1,
-        ]);
-        DB::table('states')->insert([
-            'name' => 'FST',
-            'client_id' => 1,
-        ]);
-        DB::table('states')->insert([
-            'name' => 'Schulung',
-            'description' => 'in einer Schulung evtl nicht im Funk',
-            'client_id' => 1,
-        ]);
-        DB::table('states')->insert([
-            'name' => 'Prüfung',
-            'client_id' => 1,
-        ]);
-        DB::table('states')->insert([
-            'name' => 'Code 69',
-            'client_id' => 1,
-        ]);
-        DB::table('states')->insert([
             'name' => 'Besprechung',
             'client_id' => 1,
         ]);
         DB::table('states')->insert([
-            'name' => 'Bewerbungsrunde',
+            'name' => 'Mitarbeitereinweisung',
+            'client_id' => 1,
+        ]);
+        DB::table('states')->insert([
+            'name' => '10-9 (nicht anwesend)',
             'client_id' => 1,
         ]);
     }

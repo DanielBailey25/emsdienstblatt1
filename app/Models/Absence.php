@@ -15,17 +15,11 @@ class Absence extends Model
         'to',
         'type',
         'user_id',
-        'time_included',
         'absence_type_id',
-        'approved_by_id',
     ];
 
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function approvedBy() {
-        return $this->belongsTo(User::class, 'approved_by_id');
     }
 
     public function readableStartDate() {

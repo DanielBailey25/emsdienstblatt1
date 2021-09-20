@@ -34,8 +34,8 @@
                                     <input type="number" min="0" class="form-control bg-light" value="{{old('rank')}}" name="rank" rows="1">
                                 </div>
                                 <div class="form-group mt-2">
-                                    <label for="name">Dienstnummer</label>
-                                    <input type="number" min="0" class="form-control bg-light" value="{{old('service_number')}}" name="service_number" rows="1">
+                                    <label for="name">Einreise-ID</label>
+                                    <input type="number" min="0" class="form-control bg-light" value="{{old('player_id')}}" name="player_id" rows="1">
                                 </div>
                                 <div class="form-group mt-2">
                                     <label for="name">Telefonnummer</label>

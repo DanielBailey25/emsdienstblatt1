@@ -50,5 +50,9 @@ class create_item_types extends Seeder
             'name' => 'Buffalo',
             'client_id' => 1,
         ]);
+        DB::table('item_types')->insert([
+            'name' => 'Andere',
+            'client_id' => 1,
+        ]);
     }
 }

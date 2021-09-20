@@ -16,7 +16,7 @@ class create_clients extends Seeder
     public function run()
     {
         DB::table('clients')->insert([
-            'name' => 'LSMC',
+            'name' => 'EMS',
         ]);
     }
 }

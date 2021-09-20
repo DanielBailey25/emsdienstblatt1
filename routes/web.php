@@ -44,11 +44,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/add/events', [App\Http\Controllers\EventController::class, 'createEventView'])->name('createEvent');
         Route::post('/add/events', [App\Http\Controllers\EventController::class, 'createEvent'])->name('createEvent');
         // Route::get('/absences', [App\Http\Controllers\AbsenceController::class, 'showAbsences'])->name('showAbsences');
-        Route::get('/interns', [App\Http\Controllers\WorkersController::class, 'showInterns'])->name('interns');
-        Route::post('/interns', [App\Http\Controllers\CurrentWorkerController::class, 'startWorkerForInterns'])->name('interns');
         Route::get('/training/{id}', [App\Http\Controllers\TrainingsController::class, 'showTraining'])->name('training');
         Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news');
-        Route::get('/nordmap', [App\Http\Controllers\NordmapController::class, 'index'])->name('nordmap');
     });
     Route::group(['middleware' => ['role:Admin']], function () {
         Route::prefix('admin')->group(function () {

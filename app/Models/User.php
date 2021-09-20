@@ -22,7 +22,7 @@ class User extends Authenticatable
         'password',
         'client_id',
         'rank',
-        'service_number',
+        'player_id',
         'phone',
     ];
 

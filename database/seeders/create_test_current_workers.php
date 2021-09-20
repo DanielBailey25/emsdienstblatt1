@@ -65,7 +65,7 @@ class create_test_current_workers extends Seeder
         DB::table('current_worker')->insert([
             'client_id' => 1,
             'user_id' => 6,
-            'item_id' => 6,
+            'item_id' => 3,
             'state_id' => 2,
             'related_id' => null,
             'started_at' => '2021-08-16 09:10:47',
@@ -75,7 +75,7 @@ class create_test_current_workers extends Seeder
         DB::table('current_worker')->insert([
             'client_id' => 1,
             'user_id' => 7,
-            'item_id' => 12,
+            'item_id' => 4,
             'state_id' => 1,
             'related_id' => null,
             'started_at' => '2021-08-16 06:27:47',

@@ -31,14 +31,14 @@ class UserController extends Controller
             'name' => 'required | unique:users',
             'password' => 'required | min:6',
             'rank' => 'required | integer',
-            'service_number' => 'required | integer | unique:users,service_number,id',
+            'player_id' => 'required | integer | unique:users,player_id,id',
             'phone' => 'nullable | integer',
             'role' => 'required',
         ],[], [
             'name' => 'Name',
             'password' => 'Passwort',
             'rank' => 'Rank',
-            'service_number' => 'Dienstnummer',
+            'player_id' => 'Einreise-ID',
             'phone' => 'Telefonnummer',
         ]);
 
@@ -47,7 +47,7 @@ class UserController extends Controller
             'name' => $request->input('name'),
             'password' => Hash::make($request->input('password')),
             'rank' => $request->input('rank'),
-            'service_number' => $request->input('service_number'),
+            'player_id' => $request->input('player_id'),
             'phone' => $request->input('phone'),
             'client_id' => Auth::user()->client_id,
         ]);

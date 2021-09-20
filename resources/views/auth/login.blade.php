@@ -5,7 +5,7 @@
     <div class="row align-items-center" style="height:100vh;">
         <div class="col-md-4 offset-md-4">
             <div class="card bg-light">
-                <div class="card-header">{{ __('Los Santos Dienstblatt') }}</div>
+                <div class="card-header">{{ __('Dienstblatt Login') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">

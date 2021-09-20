@@ -20,7 +20,7 @@ class create_users extends Seeder
             'name' => 'Michael_Leitung',
             'type' => 0,
             'rank' => 12,
-            'service_number' => 23,
+            'player_id' => 23,
             'phone' => 203632,
             'client_id' => 1,
             'password' => Hash::make('einfach'),
@@ -29,7 +29,7 @@ class create_users extends Seeder
             'name' => 'Michael_Geissler',
             'type' => 0,
             'rank' => 1,
-            'service_number' => 89,
+            'player_id' => 89,
             'phone' => 203632,
             'client_id' => 1,
             'password' => Hash::make('einfach'),
@@ -37,7 +37,7 @@ class create_users extends Seeder
         DB::table('users')->insert([
             'name' => 'Michael_Prakti',
             'rank' => 0,
-            'service_number' => 12,
+            'player_id' => 12,
             'phone' => 573832,
             'client_id' => 1,
             'password' => Hash::make('einfach'),
@@ -45,7 +45,7 @@ class create_users extends Seeder
         DB::table('users')->insert([
             'name' => 'Max_Mustermann',
             'rank' => 0,
-            'service_number' => 13,
+            'player_id' => 13,
             'phone' => 573832,
             'client_id' => 1,
             'password' => Hash::make('einfach'),
@@ -53,7 +53,7 @@ class create_users extends Seeder
         DB::table('users')->insert([
             'name' => 'Tester_Einfach',
             'rank' => 2,
-            'service_number' => 14,
+            'player_id' => 14,
             'phone' => 573832,
             'client_id' => 1,
             'password' => Hash::make('einfach'),
@@ -61,7 +61,7 @@ class create_users extends Seeder
         DB::table('users')->insert([
             'name' => 'Peter_Muster',
             'rank' => 5,
-            'service_number' => 16,
+            'player_id' => 16,
             'phone' => 573832,
             'client_id' => 1,
             'password' => Hash::make('einfach'),
@@ -69,7 +69,7 @@ class create_users extends Seeder
         DB::table('users')->insert([
             'name' => 'Gunther_Meisel',
             'rank' => 5,
-            'service_number' => 55,
+            'player_id' => 55,
             'phone' => 573832,
             'client_id' => 1,
             'password' => Hash::make('einfach'),

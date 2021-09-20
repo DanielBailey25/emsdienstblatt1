@@ -11,9 +11,8 @@ class WorkersController extends Controller
 {
     public function index() {
         $users = User::where('client_id', Auth::user()->client_id)->orderBy('rank', 'desc')->orderBy('name', 'asc')->get();
-        $courses = Course::where('client_id', Auth::user()->client_id)->get();
 
-        return view('workers', ['workers' => $users, 'courses' => $courses]);
+        return view('workers', ['workers' => $users]);
     }
 
     public function showInterns() {

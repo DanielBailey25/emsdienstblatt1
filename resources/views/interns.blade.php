@@ -11,7 +11,7 @@
             <thead>
                 <tr>
                 <th scope="col">Praktikant</th>
-                <th scope="col">Dienstnummer</th>
+                <th scope="col">E-ID</th>
                 <th scope="col">Tel.</th>
                 <th scope="col">Zuletzt mitgenommen:</th>
                 <th scope="col"></th>
@@ -21,7 +21,7 @@
                 @foreach ($interns as $intern)
                      <tr>
                         <th scope="row">{{$intern->name}}</th>
-                        <td>{{$intern->service_number}}</td>
+                        <td>{{$intern->player_id}}</td>
                         <td>{{$intern->phone}}</td>
                         @if($intern->getLatestCurrentWorker())
                             <td>{{$intern->getLatestCurrentWorker()->readableStartedAt() ?? ''}}</td>
