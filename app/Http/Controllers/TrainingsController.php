@@ -7,6 +7,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Exceptions\PermissionDoesNotExist;
 use Spatie\Permission\Models\Permission;
 
 class TrainingsController extends Controller
@@ -61,6 +62,8 @@ class TrainingsController extends Controller
             if (User::find(Auth::user()->id)->hasPermissionTo('call training_' . $id)) {
                 return view('training', ['training' => Training::find($id)]);
             }
+        } catch(PermissionDoesNotExist $e) {
+            return view('training', ['training' => Training::find($id)]);
         } catch(Exception $e) {
 
         }

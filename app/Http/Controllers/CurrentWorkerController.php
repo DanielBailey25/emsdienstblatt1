@@ -71,6 +71,9 @@ class CurrentWorkerController extends Controller
     public function getCurrentWorkerForCurrentUser() {
         return CurrentWorker::where(['user_id'=> Auth::user()->id, 'ended_at'=> null])->first();
     }
+    public function getCurrentWorkerByUserId($id) {
+        return CurrentWorker::where(['user_id'=> $id, 'ended_at'=> null])->first();
+    }
 
     public function itemUsedBy($itemId) {
         $worker = CurrentWorker::where(['item_id'=> $itemId, 'ended_at'=> null])->first();
@@ -83,6 +86,14 @@ class CurrentWorkerController extends Controller
         );
 
         $worker = $this->getCurrentWorkerForCurrentUser();
+
+        $oldInternsWorker = $this->getCurrentWorkerByUserId($request->input('intern_id'));
+
+        if ($oldInternsWorker) {
+            // Show review form
+            $oldInternsWorker->stopWorker();
+        }
+
 
         $this->createCurrentWorker($request->input('intern_id'), $worker->item_id, 'Prakti', $worker->state_id);
 

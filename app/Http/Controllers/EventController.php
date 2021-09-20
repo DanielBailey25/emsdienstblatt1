@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class EventsController extends Controller
+class EventController extends Controller
 {
     public function index() {
         $events = Event::where('receiver_id', Auth::user()->id)->orWhere('sender_id', Auth::user()->id)->get();
