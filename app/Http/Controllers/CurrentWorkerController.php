@@ -68,6 +68,14 @@ class CurrentWorkerController extends Controller
         }
     }
 
+    public function stopWorkerById($id) {
+        $worker = CurrentWorker::find($id);
+        if ($worker) {
+            $worker->stopWorker();
+        }
+        return redirect()->route('home');
+    }
+
     public function getCurrentWorkerForCurrentUser() {
         return CurrentWorker::where(['user_id'=> Auth::user()->id, 'ended_at'=> null])->first();
     }

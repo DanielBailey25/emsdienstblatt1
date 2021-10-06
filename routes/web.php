@@ -46,7 +46,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/events', [App\Http\Controllers\EventController::class, 'index'])->name('events');
         Route::get('/add/events', [App\Http\Controllers\EventController::class, 'createEventView'])->name('createEvent');
         Route::post('/add/events', [App\Http\Controllers\EventController::class, 'createEvent'])->name('createEvent');
-        // Route::get('/absences', [App\Http\Controllers\AbsenceController::class, 'showAbsences'])->name('showAbsences');
         Route::get('/training/{id}', [App\Http\Controllers\TrainingsController::class, 'showTraining'])->name('training');
         Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news');
     });
@@ -55,6 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/users', [App\Http\Controllers\UserController::class, 'users'])->name('users');
             Route::get('/add/user', [App\Http\Controllers\UserController::class, 'addUserView'])->name('addUserView');
             Route::get('/user/{id}/remove', [App\Http\Controllers\UserController::class, 'removeUser'])->name('removeUser');
+            Route::get('/currentworker/{id}/stop', [App\Http\Controllers\CurrentWorkerController::class, 'stopWorkerById'])->name('stopWorkerById');
             Route::get('/add/training', [App\Http\Controllers\TrainingsController::class, 'createTrainingView'])->name('createTraining');
             Route::post('/add/training', [App\Http\Controllers\TrainingsController::class, 'createTraining'])->name('createTraining');
             Route::post('/form/add/user', [App\Http\Controllers\UserController::class, 'createUser'])->name('createUserForm');

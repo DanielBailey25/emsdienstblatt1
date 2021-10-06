@@ -29,6 +29,9 @@
                                                 <th scope="col">Name</th>
                                                 <th scope="col">Code</th>
                                                 <th scope="col">Beginn</th>
+                                                @hasrole ('Admin')
+                                                <th scope="col"></th>
+                                                @endhasrole
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -42,6 +45,9 @@
                                                 <td>{{ $worker->user->name }}</td>
                                                 <td>{{ $worker->state->name }}</td>
                                                 <td>{{ $worker->readableStartedAtDiff() }}</td>
+                                                @hasrole ('Admin')
+                                                <td><a href="{{route('stopWorkerById', $worker->id)}}"><span class="badge bg-secondary bg-danger">austragen</span></a></td>
+                                                @endhasrole
                                             </tr>
                                             @foreach ($worker->related() as $subWorker)
                                             @if ($subWorker->state->id == 5)
@@ -54,6 +60,9 @@
                                                 <td>{{ $subWorker->user->name }}</td>
                                                 <td>{{ $subWorker->state->name }}</td>
                                                 <td>{{ $subWorker->readableStartedAtDiff() }}</td>
+                                                @hasrole ('Admin')
+                                                <td><a href="{{route('stopWorkerById', $worker->id)}}"><span class="badge bg-secondary bg-danger">austragen</span></a></td>
+                                                @endhasrole
                                             </tr>
                                             @endforeach
                                         </tbody>
