@@ -24,6 +24,7 @@ class User extends Authenticatable
         'rank',
         'player_id',
         'phone',
+        'created_at',
     ];
 
     /**
@@ -54,5 +55,12 @@ class User extends Authenticatable
 
     public function hasCourseById($courseId) {
         return CourseRelation::where(['user_id' => $this->id, 'course_id' => $courseId])->first();
+    }
+
+    public function readableCreatedAt() {
+        if ($this->created_at != null) {
+            return Carbon::parse($this->created_at)->isoFormat('DD.MM.YYYY');
+        }
+        return 'OG';
     }
 }

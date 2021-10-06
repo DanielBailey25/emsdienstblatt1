@@ -105,4 +105,17 @@ class UserController extends Controller
         }
         $user->save();
     }
+
+    public function removeUser($id) {
+        if ($id == Auth::user()->id){
+            $errors = new MessageBag();
+
+            // add your error messages:
+            $errors->add('user_delete_failed', 'Du kannst dich nicht selber löschen. LOL haha.');
+            return redirect()->route('users')->withErrors($errors);
+        }
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('users')->with('message', $user->name . ' wurde erfolgreich gelöscht.');
+    }
 }

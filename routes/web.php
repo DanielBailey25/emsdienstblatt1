@@ -54,6 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::prefix('admin')->group(function () {
             Route::get('/users', [App\Http\Controllers\UserController::class, 'users'])->name('users');
             Route::get('/add/user', [App\Http\Controllers\UserController::class, 'addUserView'])->name('addUserView');
+            Route::get('/user/{id}/remove', [App\Http\Controllers\UserController::class, 'removeUser'])->name('removeUser');
             Route::get('/add/training', [App\Http\Controllers\TrainingsController::class, 'createTrainingView'])->name('createTraining');
             Route::post('/add/training', [App\Http\Controllers\TrainingsController::class, 'createTraining'])->name('createTraining');
             Route::post('/form/add/user', [App\Http\Controllers\UserController::class, 'createUser'])->name('createUserForm');

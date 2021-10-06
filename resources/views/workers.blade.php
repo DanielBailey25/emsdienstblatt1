@@ -14,6 +14,7 @@
                     <th scope="col">Rank</th>
                     <th scope="col">Einreise-ID</th>
                     <th scope="col">Tel.</th>
+                    <th scope="col">Erstellt am</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,6 +24,7 @@
                         <td>{{$worker->rank}}</td>
                         <td>{{$worker->player_id}}</td>
                         <td>{{$worker->phone}}</td>
+                        <td>{{$worker->readableCreatedAt()}}</td>
                     </tr>
                 @endforeach
             </tbody>
