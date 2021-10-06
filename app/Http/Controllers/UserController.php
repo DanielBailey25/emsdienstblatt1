@@ -13,7 +13,7 @@ use Spatie\Permission\Models\Role;
 class UserController extends Controller
 {
     public function users() {
-        $users = User::where('client_id', Auth::user()->client_id)->get();
+        $users = User::where('client_id', Auth::user()->client_id)->orderBy('rank', 'DESC')->get();
         $roles = Role::all();
 
         return view('users', ['users' => $users, 'roles' => $roles]);
@@ -109,12 +109,17 @@ class UserController extends Controller
     public function removeUser($id) {
         if ($id == Auth::user()->id){
             $errors = new MessageBag();
-
-            // add your error messages:
-            $errors->add('user_delete_failed', 'Du kannst dich nicht selber löschen. LOL haha.');
+            $errors->add('user_delete_failed', 'Du kannst dich nicht selber löschen...');
             return redirect()->route('users')->withErrors($errors);
         }
         $user = User::find($id);
+
+        if ($user->is_admin) {
+            $errors = new MessageBag();
+            $errors->add('user_delete_failed_admin', 'Du kannst deinen Erschaffer nicht stürzen!');
+            return redirect()->route('users')->withErrors($errors);
+        }
+
         $user->delete();
         return redirect()->route('users')->with('message', $user->name . ' wurde erfolgreich gelöscht.');
     }
