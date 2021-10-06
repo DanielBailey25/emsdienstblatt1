@@ -27,7 +27,10 @@
                         <div class='card-body'>
                             <div class='row'>
                                 <div class='col-5 mb-1'>
-                                    {{$user->name}}  <span class="badge bg-secondary">Rang {{$user->rank}}</span>
+                                    {{$user->name}}
+                                    <span class="badge bg-secondary">Rang {{$user->rank}}</span>
+                                    <a href="{{route('userIncreaseRank', $user->id)}}"><span class="badge bg-secondary bg-success">+</span></a>
+                                    <a href="{{route('userDecreaseRank', $user->id)}}"><span class="badge bg-secondary bg-danger">-</span></a>
                                 </div>
                                 <div class='col-md-5 mb-1'>
                                     <select name="state_id" class="form-select bg-light" onchange="changeRole(this)" data-user="{{$user->id}}">

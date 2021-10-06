@@ -28,9 +28,9 @@ class UserController extends Controller
 
     public function createUser(Request $request) {
         $request->validate([
-            'name' => 'required | unique:users',
+            'name' => 'required | max:255',
             'password' => 'required | min:6',
-            'rank' => 'required | integer',
+            'rank' => 'required | integer | max:12 | min:0',
             'player_id' => 'required | integer | unique:users,player_id,id',
             'phone' => 'nullable | regex:/\d{2}-\d{2}-\d{3}/',
             'role' => 'required',
@@ -122,5 +122,23 @@ class UserController extends Controller
 
         $user->delete();
         return redirect()->route('users')->with('message', $user->name . ' wurde erfolgreich gelöscht.');
+    }
+
+    public function increaseRank($id) {
+        $user = User::find($id);
+        if (!$user || $user->rank >= 12) {
+            return redirect()->route('users');
+        }
+        $user->increment('rank', 1);
+        return redirect()->route('users')->with('message', $user->name . ' wurde auf Rang ' . $user->rank . ' angehoben.');
+    }
+
+    public function decreaseRank($id) {
+        $user = User::find($id);
+        if (!$user || $user->rank <= 0) {
+            return redirect()->route('users');
+        }
+        $user->decrement('rank', 1);
+        return redirect()->route('users')->with('message', $user->name . ' wurde auf Rang ' . $user->rank . ' herabgesenkt.');
     }
 }

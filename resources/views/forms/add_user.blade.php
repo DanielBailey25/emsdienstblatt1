@@ -23,19 +23,19 @@
                                 @csrf
                                 <div class="form-group mt-2">
                                     <label for="name">Name</label>
-                                    <input class="form-control bg-light" name="name" value="{{old('name')}}" rows="1">
+                                    <input required class="form-control bg-light" name="name" value="{{old('name')}}" rows="1">
                                 </div>
                                 <div class="form-group mt-2">
                                     <label for="name">Passwort</label>
-                                    <input type="password" class="form-control bg-light" name="password"  rows="1">
+                                    <input required type="password" class="form-control bg-light" name="password"  rows="1">
                                 </div>
                                 <div class="form-group mt-2">
                                     <label for="name">Rank</label>
-                                    <input type="number" min="0" class="form-control bg-light" value="{{old('rank')}}" name="rank" rows="1">
+                                    <input required min="0" max="12" type="number" min="0" class="form-control bg-light" value="{{old('rank')}}" name="rank" rows="1">
                                 </div>
                                 <div class="form-group mt-2">
                                     <label for="name">Einreise-ID</label>
-                                    <input type="number" min="0" class="form-control bg-light" value="{{old('player_id')}}" name="player_id" rows="1">
+                                    <input required type="number" min="0" class="form-control bg-light" value="{{old('player_id')}}" name="player_id" rows="1">
                                 </div>
                                 <div class="form-group mt-2">
                                     <label for="name">Telefonnummer</label>
