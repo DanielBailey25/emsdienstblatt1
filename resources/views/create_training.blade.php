@@ -23,15 +23,20 @@
                 <div class="card bg-light py-3 px-3">
                     <h1 class='fs-3'>Ausbildung hinzufügen</h1>
                     <div class="card-body">
-                        <form method="POST" action="{{route('createTraining')}}">
+                        <form method="POST" action="{{route('createTraining')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group mt-2">
                                 <label for="title">Titel</label>
-                                <input value="{{old('title')}}" class="form-control bg-light" name="title" rows="1">
+                                <input required value="{{old('title')}}" class="form-control bg-light" name="title" rows="1">
                             </div>
                             <div class="form-group mt-2">
-                                <label for="url">iFrame-URL</label>
-                                <input value="{{old('url')}}"  class="form-control bg-light" name="url"  rows="1">
+                                <label for="url">Datei</label>
+                                <input required type="file" class="form-control bg-light" name="file">
+                                <div id="uploadFileHelp" class="form-text">pdf, jpeg, jpg, png</div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <input class="form-check-input" type="checkbox" value="true" id="checkbox" name="isPublic">
+                                <label class="form-check-label" for="checkbox"> Öffentlich für alle zugänglich</label>
                             </div>
                             <div class="form-group mt-4">
                                 <input type="submit" class="btn btn-primary text-white" name="submit" value="Erstellen" />

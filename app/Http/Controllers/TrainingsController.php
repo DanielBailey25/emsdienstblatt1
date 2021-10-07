@@ -19,15 +19,19 @@ class TrainingsController extends Controller
     public function createTraining(Request $request) {
         $request->validate([
             'title' => 'required',
-            'url' => 'required | url',
+            'file' => 'required | mimes:pdf,jpeg,jpg,png | max:4096',
         ],[], [
             'title' => 'Titel',
-            'url' => 'iFrame-URL',
+            'file' => 'Datei',
         ]);
+
+        $filename = time().'.'.$request->file->extension();
+        $request->file->move(public_path('uploads'), $filename);
 
         Training::create([
             'title' => $request->input('title'),
-            'url' => $request->input('url'),
+            'file' => $filename,
+            'is_public' => ($request->input('isPublic') != null)  ? true : false,
             'client_id' => Auth::user()->client_id,
         ]);
 
@@ -58,12 +62,21 @@ class TrainingsController extends Controller
     }
 
     public function showTraining($id) {
+        $training = Training::find($id);
+        if (!$training) {
+            return redirect()->route('home');
+        } else if ($training->is_public) {
+            return view('training', ['training' => $training]);
+        }
         try {
             if (User::find(Auth::user()->id)->hasPermissionTo('call training_' . $id)) {
-                return view('training', ['training' => Training::find($id)]);
+                return view('training', ['training' => $training]);
             }
         } catch(PermissionDoesNotExist $e) {
-            return view('training', ['training' => Training::find($id)]);
+            if (User::find(Auth::user()->id)->hasRole('Admin')) {
+                return view('training', ['training' => $training]);
+            }
+            return redirect()->route('home');
         } catch(Exception $e) {
 
         }

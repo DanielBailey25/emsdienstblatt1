@@ -16,7 +16,8 @@ class Training extends Model
      */
     protected $fillable = [
         'title',
-        'url',
+        'file',
         'client_id',
+        'is_public',
     ];
 }

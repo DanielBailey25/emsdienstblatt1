@@ -38,7 +38,9 @@
                                 <label>Kurs auswählen</label>
                                 <select id="category" name="training" class="form-control">
                                     @foreach ($trainings as $training)
-                                        <option value="{{$training->id}}">{{$training->title}}</option>
+                                        @if (!$training->is_public)
+                                            <option value="{{$training->id}}">{{$training->title}}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>

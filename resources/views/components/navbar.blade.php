@@ -47,9 +47,13 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
                         @foreach ($trainings as $training)
-                            @can('call training_' . $training->id)
+                            @if ($training->is_public)
                                 <li><a class="dropdown-item" href="{{route('training', [$training->id])}}">{{$training->title}}</a></li>
-                            @endcan
+                            @else
+                                @can('call training_' . $training->id)
+                                    <li><a class="dropdown-item" href="{{route('training', [$training->id])}}">{{$training->title}}</a></li>
+                                @endcan
+                            @endif
                         @endforeach
                     </ul>
                 </li>
