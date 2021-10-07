@@ -19,7 +19,7 @@ class TrainingsController extends Controller
     public function createTraining(Request $request) {
         $request->validate([
             'title' => 'required',
-            'file' => 'required | mimes:pdf,jpeg,jpg,png | max:4096',
+            'file' => 'required|mimes:pdf,jpeg,jpg,png|max:4096',
         ],[], [
             'title' => 'Titel',
             'file' => 'Datei',
