@@ -13,7 +13,7 @@ use Spatie\Permission\Models\Role;
 class UserController extends Controller
 {
     public function users() {
-        $users = User::where('client_id', Auth::user()->client_id)->orderBy('rank', 'DESC')->get();
+        $users = User::where('client_id', Auth::user()->client_id)->orderBy('name', 'asc')->get();
         $roles = Role::all();
 
         return view('users', ['users' => $users, 'roles' => $roles]);
