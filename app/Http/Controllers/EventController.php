@@ -27,7 +27,7 @@ class EventController extends Controller
     public function createEvent(Request $request) {
         $request->validate([
             'receiver_id' => 'required|exists:users,id',
-            'date' => 'required | date | after:yesterday',
+            'date' => 'required|date|after:yesterday',
             'time' => 'required',
             'location' => 'nullable',
         ],[], ['receiver_id' => 'Empfänger']);

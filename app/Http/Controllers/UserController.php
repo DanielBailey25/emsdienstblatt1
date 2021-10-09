@@ -67,9 +67,9 @@ class UserController extends Controller
 
     public function changePassword(Request $request) {
         $request->validate([
-            'old_pw' => 'required | password',
-            'new_pw' => 'required | min:6',
-            'repeat_new_pw' => 'required | same:new_pw',
+            'old_pw' => 'required|password',
+            'new_pw' => 'required|min:6',
+            'repeat_new_pw' => 'required|same:new_pw',
         ],[], [
             'new_pw' => 'Neues Passwort',
             'repeat_new_pw' => 'Neues Passwort wiederholen'
@@ -82,7 +82,7 @@ class UserController extends Controller
 
     public function changeInformation(Request $request) {
         $request->validate([
-            'phone' => 'required | regex:/\d{2}-\d{2}-\d{3}/ | min:9',
+            'phone' => 'required|regex:/\d{2}-\d{2}-\d{3}/|min:9',
         ]);
 
         $request->user()->phone = $request->phone;

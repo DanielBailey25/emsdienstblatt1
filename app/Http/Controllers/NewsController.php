@@ -24,9 +24,9 @@ class NewsController extends Controller
 
     public function addNews(Request $request) {
         $request->validate([
-            'category' => 'required | exists:news_categories,id',
-            'title' => 'required | max:255',
-            'content' => 'required | max:500',
+            'category' => 'required|exists:news_categories,id',
+            'title' => 'required|max:255',
+            'content' => 'required|max:500',
         ]);
 
         News::create([
