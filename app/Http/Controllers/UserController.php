@@ -30,7 +30,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required | max:255',
             'password' => 'required | min:6',
-            'rank' => 'required | integer | max:12 | min:0',
+            'rank' => 'required | integer | min:0 | max:12',
             'player_id' => 'required | integer | unique:users,player_id,id',
             'phone' => 'nullable | regex:/\d{2}-\d{2}-\d{3}/',
             'role' => 'required',
