@@ -20,22 +20,16 @@ class DashboardController extends Controller
     public function index()
     {
         $currentWorker = $this->getActiveWorkerWithoutRelation();
-        $currentWorkerCount = $currentWorker->count();
         $maxWorkerCount = $this->getCountActiveWorkers();
-        $medicalDepartments = $this->getItemsByType(1);
-        $controlCenters = $this->getControlCentersByClientId();
 
         return view('dashboard', [
             'currentWorker' => $currentWorker,
-            'currentWorkerCount' => $currentWorkerCount,
             'maxWorkerCount' => $maxWorkerCount,
-            'medicalDepartments' => $medicalDepartments,
-            'controlCenters' => $controlCenters,
         ]);
     }
 
     public function getActiveWorkerWithoutRelation() {
-        return CurrentWorker::where(['ended_at' => null, 'client_id' => Auth::user()->client_id, 'related_id' => null])->get();
+        return CurrentWorker::where(['ended_at' => null, 'client_id' => Auth::user()->client_id, 'related_id' => null])->orderBy('id', 'desc')->get();
     }
 
     public function getCountActiveWorkers() {

@@ -86,6 +86,12 @@
                             <div class="col-6">
                                 LuaScript76#6969
                             </div>
+                            <div class="col-6 pt-3">
+                                Serverstandort:
+                            </div>
+                            <div class="col-6 pt-3">
+                                Frankfurt am Main
+                            </div>
                         </div>
                     </div>
                 </div>

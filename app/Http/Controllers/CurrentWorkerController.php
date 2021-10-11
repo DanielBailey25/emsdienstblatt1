@@ -25,7 +25,7 @@ class CurrentWorkerController extends Controller
             'state_id' => 'required',
             'item_id' => 'required',
         ],[
-            'item_id.required' => 'Ein Auto oder Gebäude muss ausgewählt werden.'
+            'item_id.required' => 'Ein Ort muss ausgewählt werden.'
         ]);
 
         $currentWorkerForUser = $this->getCurrentWorkerForCurrentUser();
