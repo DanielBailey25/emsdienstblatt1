@@ -68,7 +68,7 @@
                                                 <td>{{ $subWorker->state->name }}</td>
                                                 <td>{{ $subWorker->readableStartedAtDiff() }}</td>
                                                 @hasrole ('Admin')
-                                                <td><a href="{{route('stopWorkerById', $worker->id)}}"><span class="badge bg-secondary bg-danger">austragen</span></a></td>
+                                                <td><a href="{{route('stopWorkerById', $subWorker->id)}}"><span class="badge bg-secondary bg-danger">austragen</span></a></td>
                                                 @endhasrole
                                             </tr>
                                             @endforeach
