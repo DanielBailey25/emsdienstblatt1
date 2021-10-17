@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Exception;
+use App\Models\CurrentWorker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -119,7 +120,10 @@ class UserController extends Controller
             $errors->add('user_delete_failed_admin', 'Du kannst deinen Erschaffer nicht stürzen!');
             return redirect()->route('users')->withErrors($errors);
         }
-
+        $currentWorker = CurrentWorker::where(['user_id'=> $id, 'ended_at'=> null])->first();
+        if ($currentWorker) {
+            $currentWorker->stopWorker();
+        }
         $user->delete();
         return redirect()->route('users')->with('message', $user->name . ' wurde erfolgreich gelöscht.');
     }
