@@ -33,7 +33,7 @@ class DashboardController extends Controller
     }
 
     public function notificationForUser() {
-        $notificationsRead = NotificationRead::where('read_by_user_id', Auth::user()->id)->get('id');
+        $notificationsRead = NotificationRead::where('read_by_user_id', Auth::user()->id)->pluck('notification_id');
         $notifications = Notification::whereDate('created_at', '>=', Auth::user()->created_at ?? '1970-01-01')->whereNotIn('id', $notificationsRead)->get();
         return $notifications;
     }
@@ -42,7 +42,7 @@ class DashboardController extends Controller
         $notification = Notification::find($id);
         if ($notification) {
             NotificationRead::create([
-                'notification_id' => $id,
+                'notification_id' => $notification->id,
                 'read_by_user_id' => Auth::user()->id,
             ]);
         }
