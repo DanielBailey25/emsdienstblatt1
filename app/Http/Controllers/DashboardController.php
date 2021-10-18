@@ -29,7 +29,7 @@ class DashboardController extends Controller
     }
 
     public function getActiveWorkerWithoutRelation() {
-        return CurrentWorker::where(['ended_at' => null, 'client_id' => Auth::user()->client_id, 'related_id' => null])->orderBy('id', 'desc')->get();
+        return CurrentWorker::where(['ended_at' => null, 'client_id' => Auth::user()->client_id, 'related_id' => null])->orderBy('item_id')->get();
     }
 
     public function getCountActiveWorkers() {
