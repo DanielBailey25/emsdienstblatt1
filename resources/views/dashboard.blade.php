@@ -6,7 +6,32 @@
     @include('components.navbar')
 
     <div class="py-4 col d-flex flex-column h-sm-100">
-
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif
+        @foreach ($notifications as $notification)
+            <div class="modal-content mb-3">
+                <div class="modal-header">
+                    @if ($notification->isNews)
+                        <h5 class="modal-title text-danger" id="exampleModalCenterTitle">Neue News: {{$notification->title}}<span class="badge badge-secondary text-danger">{{$notification->readableCreatedAt()}}</span></h5>
+                    @elseif ($notification->title)
+                        <h5 class="modal-title text-danger" id="exampleModalCenterTitle">{{$notification->title}}<span class="badge badge-secondary text-danger">{{$notification->readableCreatedAt()}}</span></h5>
+                    @else
+                        <h5 class="modal-title text-danger" id="exampleModalCenterTitle">Nachricht von {{$notification->creator()->name}}<span class="badge badge-secondary text-danger">{{$notification->readableCreatedAt()}}</span></h5>
+                    @endif
+                </div>
+                <div class="modal-body">
+                  <p>
+                    {!!nl2br(e($notification->content))!!}
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <a href="{{route('notificationRead', $notification->id)}}" type="button" class="btn btn-primary">Als gelesen markieren</a>
+                </div>
+            </div>
+        @endforeach
         <div class="row row-cols-auto">
             @if($currentWorker->count() == 0)
                 <div class="col-md py-4">

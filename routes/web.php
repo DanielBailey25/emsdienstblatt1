@@ -37,6 +37,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/user/change/role', [App\Http\Controllers\UserController::class, 'changeRole'])->name('changeRole');
     });
 
+    Route::get('/notification/{id}/read', [App\Http\Controllers\DashboardController::class, 'markNotificationAsRead'])->name('notificationRead');
+
     Route::get('/workers', [App\Http\Controllers\WorkersController::class, 'index'])->name('workers');
     Route::get('/absence/add', [App\Http\Controllers\AbsenceController::class, 'showCreateAbsenceView'])->name('createAbsence');
 

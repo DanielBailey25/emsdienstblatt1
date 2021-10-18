@@ -23,7 +23,7 @@
                                         von: {{$news->creator->name}}, {{$news->readableStartedAt()}}
                                     </div>
                                     <div class="text-white fs-5">
-                                        {{$news->content}}
+                                        {!!nl2br(e($news->content))!!}
                                     </div>
                                     <hr/>
                                 @endforeach

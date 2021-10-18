@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\AssignedControlCenter;
 use App\Models\CurrentWorker;
 use App\Models\Item;
+use App\Models\Notification;
+use App\Models\NotificationRead;
 use App\Models\Training;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,11 +23,30 @@ class DashboardController extends Controller
     {
         $currentWorker = $this->getActiveWorkerWithoutRelation();
         $maxWorkerCount = $this->getCountActiveWorkers();
+        $notifications = $this->notificationForUser();
 
         return view('dashboard', [
             'currentWorker' => $currentWorker,
             'maxWorkerCount' => $maxWorkerCount,
+            'notifications' => $notifications,
         ]);
+    }
+
+    public function notificationForUser() {
+        $notificationsRead = NotificationRead::where('read_by_user_id', Auth::user()->id)->get('id');
+        $notifications = Notification::whereDate('created_at', '>=', Auth::user()->created_at ?? '1970-01-01')->whereNotIn('id', $notificationsRead)->get();
+        return $notifications;
+    }
+
+    public function markNotificationAsRead($id) {
+        $notification = Notification::find($id);
+        if ($notification) {
+            NotificationRead::create([
+                'notification_id' => $id,
+                'read_by_user_id' => Auth::user()->id,
+            ]);
+        }
+        return redirect()->route('home')->with('message', 'Die Benachrichtigung wurde als gelesen markiert.');
     }
 
     public function getActiveWorkerWithoutRelation() {

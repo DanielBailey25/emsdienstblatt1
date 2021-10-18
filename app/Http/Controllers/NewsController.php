@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use App\Models\NewsCategory;
-use Carbon\Carbon;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,6 +34,13 @@ class NewsController extends Controller
             'content' => $request->input('content'),
             'creator_id' => Auth::user()->id,
             'news_category_id' => $request->input('category'),
+        ]);
+
+        Notification::create([
+            'title' =>  $request->input('title'),
+            'content' => $request->input('content'),
+            'created_by_user_id' => Auth::user()->id,
+            'isNews' => true,
         ]);
 
         return redirect()->route('addNews')->with('message', 'Die News wurden aktualisiert.');
