@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
 use App\Models\User;
 use App\Models\Warn;
 use Illuminate\Http\Request;
@@ -32,6 +33,12 @@ class WarnsController extends Controller
                 'created_by_user_id' => Auth::user()->id,
             ]
         );
+
+        // Notification::create([
+        //     'title' =>  'Du wurdest verwarnt',
+        //     'content' => $request->content,
+        //     'created_by_user_id' => Auth::user()->id,
+        // ]);
         return redirect()->route('showWarns')->with('message', 'Die Verwarnung wurde erfolgreich erstellt.');
     }
 

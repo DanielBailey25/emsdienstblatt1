@@ -80,16 +80,19 @@
                 <div class='card bg-grey'>
                     <div class='card-body'>
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-4">
                                 Bugs melden:
                             </div>
-                            <div class="col-6">
-                                LuaScript76#6969
+                            <div class="col-8">
+                                Ich bin IC nicht so aktiv. Falls was akutes autreten sollte, bitte im Discord oder bei der Leitungsebene melden.<br>
+                                Discord: LuaScript76#6969<br>
+                                IC: Michael Geissler (#3947)<br>
+                                Tel: 15-75-643
                             </div>
-                            <div class="col-6 pt-3">
+                            <div class="col-4 pt-3">
                                 Serverstandort:
                             </div>
-                            <div class="col-6 pt-3">
+                            <div class="col-8 pt-3">
                                 Frankfurt am Main
                             </div>
                         </div>
