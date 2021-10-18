@@ -70,6 +70,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
                         @hasrole('Admin')
+                            <li><a class="dropdown-item" href="{{route('showWarns')}}">Verwarnungen</a></li>
                             <li><a class="dropdown-item" href="{{ route('users') }}">Benutzer verwalten</a></li>
                             <li><a class="dropdown-item" href="{{route('createTraining')}}">Ausbildung hinzufügen</a></li>
                             {{-- <li><a class="dropdown-item" href="#">Gebäude / Fahrzeuge</a></li> --}}

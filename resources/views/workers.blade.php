@@ -15,6 +15,9 @@
                     <th scope="col">Einreise-ID</th>
                     <th scope="col">Tel.</th>
                     <th scope="col">Erstellt am</th>
+                    @hasrole('Admin')
+                    <th scope="col"><th>
+                    @endhasrole
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +28,9 @@
                         <td>{{$worker->player_id}}</td>
                         <td>{{$worker->phone}}</td>
                         <td>{{$worker->readableCreatedAt()}}</td>
+                        @hasrole('Admin')
+                        <td><a href="{{route('showCreateWarnForm', $worker->id)}}"><span class="badge bg-secondary bg-danger">verwarnen</span></a></td>
+                        @endhasrole
                     </tr>
                 @endforeach
             </tbody>

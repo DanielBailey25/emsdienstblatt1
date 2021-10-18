@@ -40,6 +40,6 @@ class AbsenceController extends Controller
             'absence_type_id' => (int) $request->input('absence_type'),
         ]);
 
-        return redirect('/create/absence')->with('message', 'Es wurde erfolgreich eine Abwesenheit erstellt / beantragt.');
+        return redirect()->route('createAbsence')->with('message', 'Es wurde erfolgreich eine Abwesenheit erstellt / beantragt.');
     }
 }

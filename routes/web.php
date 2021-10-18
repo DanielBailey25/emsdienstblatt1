@@ -57,6 +57,11 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/user/{id}/rank/decrease', [App\Http\Controllers\UserController::class, 'decreaseRank'])->name('userDecreaseRank');
             Route::get('/user/{id}/remove', [App\Http\Controllers\UserController::class, 'removeUser'])->name('removeUser');
 
+            Route::get('/warns', [App\Http\Controllers\WarnsController::class, 'show'])->name('showWarns');
+            Route::get('/warns/delete/{id}', [App\Http\Controllers\WarnsController::class, 'delete'])->name('deleteWarn');
+            Route::post('/warns/create', [App\Http\Controllers\WarnsController::class, 'create'])->name('createWarn');
+            Route::get('/warns/create/{userId}', [App\Http\Controllers\WarnsController::class, 'showForm'])->name('showCreateWarnForm');
+
             Route::get('/currentworker/{id}/stop', [App\Http\Controllers\CurrentWorkerController::class, 'stopWorkerById'])->name('stopWorkerById');
             Route::get('/training/add', [App\Http\Controllers\TrainingsController::class, 'createTrainingView'])->name('createTraining');
             Route::post('/training/add', [App\Http\Controllers\TrainingsController::class, 'createTraining'])->name('createTraining');
