@@ -84,7 +84,7 @@
                                 Bugs melden:
                             </div>
                             <div class="col-8">
-                                Ich bin IC nicht so aktiv. Falls was akutes autreten sollte, bitte im Discord oder bei der Leitungsebene melden.<br>
+                                Ich bin IC nicht so aktiv. Falls was akutes autreten sollte, bitte im Discord oder bei der Leitungsebene melden.<br><br>
                                 Discord: LuaScript76#6969<br>
                                 IC: Michael Geissler (#3947)<br>
                                 Tel: 15-75-643
