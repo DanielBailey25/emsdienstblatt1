@@ -10,7 +10,7 @@
             <div class="col-xl-12 col-md-12 mb-5">
                 <div class="row">
                     <div class="col-md-4">
-                        <h4>Top 3 diese Woche</h4>
+                        <h4>Top 3 diesen Monat</h4>
                         <table class="table table-striped table-hover text-white">
                             <thead>
                                 <tr>
@@ -20,21 +20,26 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($month as $userId => $countInMinutes)
+                                    <tr>
+                                        @if ($loop->index == 0)
+                                            <td><span style="font-size: 1.5rem;">🥇</span></td>
+                                        @elseif ($loop->index == 1)
+                                            <td><span style="font-size: 1.5rem;">🥈</span></td>
+                                        @else
+                                            <td><span style="font-size: 1.5rem;">🥉</span></td>
+                                        @endif
+                                        <td>{{App\Models\User::find($userId)->name}}</td>
+                                        <td>{{Carbon\CarbonInterval::minutes($countInMinutes)->cascade()->forHumans()}}</td>
+                                    </tr>
+                               @endforeach
+                               @if (!array_key_exists(Auth::user()->id, $month))
                                <tr>
-                                    <td><span style="font-size: 1.5rem;">🥇</span></td>
-                                    <td>In Arbeit</td>
-                                    <td></td>
-                               </tr>
-                               <tr>
-                                    <td><span style="font-size: 1.5rem;">🥈</span></td>
-                                    <td></td>
-                                    <td></td>
-                               </tr>
-                               <tr>
-                                    <td><span style="font-size: 1.5rem;">🥉</span></td>
-                                    <td></td>
-                                    <td></td>
-                               </tr>
+                                    <td><span style="font-size: 1.5rem;">-</span></td>
+                                    <td>{{Auth::user()->name}}</td>
+                                    <td>{{Carbon\CarbonInterval::minutes($monthUser)->cascade()->forHumans()}}</td>
+                                </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>
@@ -73,7 +78,7 @@
                         </table>
                     </div>
                     <div class="col-md-4">
-                        <h4>Top 3 diesen Monat</h4>
+                        <h4>Top 3 diese Woche</h4>
                         <table class="table table-striped table-hover text-white">
                             <thead>
                                 <tr>
@@ -83,21 +88,26 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($week as $userId => $countInMinutes)
+                                    <tr>
+                                        @if ($loop->index == 0)
+                                            <td><span style="font-size: 1.5rem;">🥇</span></td>
+                                        @elseif ($loop->index == 1)
+                                            <td><span style="font-size: 1.5rem;">🥈</span></td>
+                                        @else
+                                            <td><span style="font-size: 1.5rem;">🥉</span></td>
+                                        @endif
+                                        <td>{{App\Models\User::find($userId)->name}}</td>
+                                        <td>{{Carbon\CarbonInterval::minutes($countInMinutes)->cascade()->forHumans()}}</td>
+                                    </tr>
+                               @endforeach
+                               @if (!array_key_exists(Auth::user()->id, $week))
                                <tr>
-                                    <td><span style="font-size: 1.5rem;">🥇</span></td>
-                                    <td>In Arbeit</td>
-                                    <td></td>
-                               </tr>
-                               <tr>
-                                    <td><span style="font-size: 1.5rem;">🥈</span></td>
-                                    <td></td>
-                                    <td></td>
-                               </tr>
-                               <tr>
-                                    <td><span style="font-size: 1.5rem;">🥉</span></td>
-                                    <td></td>
-                                    <td></td>
-                               </tr>
+                                    <td><span style="font-size: 1.5rem;">-</span></td>
+                                    <td>{{Auth::user()->name}}</td>
+                                    <td>{{Carbon\CarbonInterval::minutes($weekUser)->cascade()->forHumans()}}</td>
+                                </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>
