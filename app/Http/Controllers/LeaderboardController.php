@@ -27,7 +27,7 @@ class LeaderboardController extends Controller
             $lifetime[$userId] = $countMinutes;
             arsort($lifetime);
         }
-        $lifetimeUser = $lifetime[Auth::user()->id];
+        $lifetimeUser = isset($lifetime[Auth::user()->id]) ? $lifetime[Auth::user()->id] : 0;
         $lifetime = array_slice($lifetime, 0, 3, true);
 
         $userIdStats = CurrentWorker::whereNotNull('ended_at')->where('ended_at', '>=', Carbon::now()->subMonth(1)->toDateTimeString())->get()->groupBy('user_id');
@@ -45,7 +45,7 @@ class LeaderboardController extends Controller
             $month[$userId] = $countMinutes;
             arsort($month);
         }
-        $monthUser = $month[Auth::user()->id];
+        $monthUser = isset($month[Auth::user()->id]) ? $month[Auth::user()->id] : 0;
         $month = array_slice($month, 0, 3, true);
 
         $userIdStats = CurrentWorker::whereNotNull('ended_at')->where('ended_at', '>=', Carbon::now()->subWeek(1)->toDateTimeString())->get()->groupBy('user_id');
@@ -63,7 +63,7 @@ class LeaderboardController extends Controller
             $week[$userId] = $countMinutes;
             arsort($week);
         }
-        $weekUser = $week[Auth::user()->id];
+        $weekUser = isset($week[Auth::user()->id]) ? $week[Auth::user()->id] : 0;
         $week = array_slice($week, 0, 3, true);
         return view('leaderboard', [
             'lifetime' => $lifetime,
