@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/workers', [App\Http\Controllers\WorkersController::class, 'index'])->name('workers');
     Route::get('/absence/add', [App\Http\Controllers\AbsenceController::class, 'showCreateAbsenceView'])->name('createAbsence');
+    Route::get('/absence/{id}/delete', [App\Http\Controllers\AbsenceController::class, 'deleteAbsence'])->name('deleteAbsence');
 
     Route::prefix('information')->group(function () {
         Route::get('/absences', [App\Http\Controllers\AbsenceController::class, 'showAbsences'])->name('showAbsences');

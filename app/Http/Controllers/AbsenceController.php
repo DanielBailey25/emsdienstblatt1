@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Absence;
 use App\Models\AbsenceType;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,5 +42,23 @@ class AbsenceController extends Controller
         ]);
 
         return redirect()->route('showAbsences')->with('message', 'Dein Urlaub wurde im System registriert. Schönen Urlaub!');
+    }
+
+    public function deleteAbsence($id) {
+        $allowed = false;
+        $absence = Absence::find($id);
+        if (!$absence) {
+            return redirect()->route('home');
+        }
+        if (Auth::user()->id == $absence->user_id) {
+            $allowed = true;
+        } else if (User::find(Auth::user()->id)->hasRole('Admin')) {
+            $allowed = true;
+        }
+        if($allowed) {
+            $absence->delete();
+            return redirect()->route('showAbsences')->with('error', 'Urlaub wurde gelöscht.');
+        }
+        return redirect()->route('showAbsences')->with('error', 'Urlaub konnte nicht gelöscht werden.');
     }
 }
