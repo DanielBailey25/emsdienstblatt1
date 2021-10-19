@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CurrentWorker;
+use App\Models\User;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use Illuminate\Http\Request;
@@ -14,6 +15,9 @@ class LeaderboardController extends Controller
         $userIdStats = CurrentWorker::whereNotNull('ended_at')->get()->groupBy('user_id');
         $lifetime = [];
         foreach($userIdStats as $userId => $workers) {
+            if (!User::find($userId)) {
+                continue;
+            }
             $countMinutes = 0;
             foreach ($workers as $worker) {
                 $started =  Carbon::parse($worker->started_at);
