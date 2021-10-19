@@ -12,7 +12,7 @@
             </div>
         @endif
         @foreach ($notifications as $notification)
-            <div class="modal-content mb-3">
+            <div class="modal-content mb-3 bg-light">
                 <div class="modal-header">
                     @if ($notification->isNews)
                         <h5 class="modal-title text-danger" id="exampleModalCenterTitle">Neue News: {{$notification->title}}<span class="badge badge-secondary text-danger">{{$notification->readableCreatedAt()}}</span></h5>
@@ -28,7 +28,7 @@
                   </p>
                 </div>
                 <div class="modal-footer">
-                  <a href="{{route('notificationRead', $notification->id)}}" type="button" class="btn btn-primary">Als gelesen markieren</a>
+                  <a href="{{route('notificationRead', $notification->id)}}" type="button" class="btn btn-primary text-white">Als gelesen markieren</a>
                 </div>
             </div>
         @endforeach

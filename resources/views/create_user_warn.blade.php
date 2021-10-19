@@ -26,7 +26,7 @@
                         @csrf
                         <div class="mb-3">
                           <label for="selectStartDate" class="form-label">Mitarbeiter</label>
-                          <input type="text" disabled class="form-control" value="{{$warnedUser->name}}">
+                          <input type="text" disabled class="form-control bg-light" value="{{$warnedUser->name}}">
                           <input type="hidden" class="form-control" name="warned_user" value="{{$warnedUser->id}}">
                         </div>
                         <div class="mb-3">
