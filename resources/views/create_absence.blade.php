@@ -21,13 +21,10 @@
                     </div>
                 @endif
                 <div class="card bg-light py-3 px-3">
-                    <h1 class='fs-3'>Abwesenheit einreichen</h1>
+                    <h1 class='fs-3 mb-3'>Urlaub einreichen</h1>
                     <form method="POST" action="{{route('formCreateAbsence')}}">
                         @csrf
-                        <div class="btn-group mb-2" role="group">
-                            <input type="radio" class="btn-check" name="absence_type" id="btnradio1" autocomplete="off" value="2" checked>
-                            <label class="btn btn-outline-primary text-white" for="btnradio1">Urlaub</label>
-                        </div>
+                        <input type="hidden" class="btn-check" name="absence_type" id="btnradio1" autocomplete="off" value="2" checked>
                         <div class="mb-3">
                           <label for="selectStartDate" class="form-label">Von Datum</label>
                           <input type="date" class="form-control" id="selectStartDate" name="start_date" value="{{old('start_date')}}">

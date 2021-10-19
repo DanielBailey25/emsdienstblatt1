@@ -13,7 +13,7 @@
                 </div>
             @endif
             <div class="col-xl-12 col-md-12 mb-5">
-                <h1 class="display-8">Abwesenheiten</h1>
+                <h1 class="display-8">Urlaubsübersicht</h1>
                 <table class="table table-striped table-hover text-white">
                     <thead>
                         <tr>
