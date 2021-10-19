@@ -76,9 +76,30 @@ class CurrentWorkerController extends Controller
         return redirect()->route('home');
     }
 
+    public function changeStatus() {
+        $latestClosedWorker = $this->getLatestClosedWorkerForCurrentUser();
+        $currentWorkerForUser = $this->getCurrentWorkerForCurrentUser();
+        if (!$currentWorkerForUser) {
+            return redirect()->route('home');
+        }
+        $this->stopCurrentWorkerForUser();
+
+        $latestStateId = ($latestClosedWorker) ? $latestClosedWorker->state->id : 1;
+        $stateId = ($currentWorkerForUser->state->id == 5) ? $latestStateId : 5;
+
+        $this->createCurrentWorker(Auth::user()->id, $currentWorkerForUser->item->id, $currentWorkerForUser->description, $stateId);
+
+        return redirect()->route('home');
+    }
+
     public function getCurrentWorkerForCurrentUser() {
         return CurrentWorker::where(['user_id'=> Auth::user()->id, 'ended_at'=> null])->first();
     }
+
+    public function getLatestClosedWorkerForCurrentUser() {
+        return CurrentWorker::where(['user_id'=> Auth::user()->id])->whereNotNull('ended_at')->orderBy('ended_at', 'desc')->first();
+    }
+
     public function getCurrentWorkerByUserId($id) {
         return CurrentWorker::where(['user_id'=> $id, 'ended_at'=> null])->first();
     }

@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
 
     Route::get('/start', [App\Http\Controllers\CurrentWorkerController::class, 'index'])->name('startWorker');
+    Route::get('/status/change', [App\Http\Controllers\CurrentWorkerController::class, 'changeStatus'])->name('changeStatus');
 
     Route::prefix('form')->group(function () {
         Route::post('/currentworker/start', [App\Http\Controllers\CurrentWorkerController::class, 'startWorker'])->name('formStartWorker');

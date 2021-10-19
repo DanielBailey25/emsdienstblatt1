@@ -24,11 +24,13 @@ class DashboardController extends Controller
         $currentWorker = $this->getActiveWorkerWithoutRelation();
         $maxWorkerCount = $this->getCountActiveWorkers();
         $notifications = $this->notificationForUser();
+        $workerForUser = $this->getActiveWorkerForCurrentUser();
 
         return view('dashboard', [
             'currentWorker' => $currentWorker,
             'maxWorkerCount' => $maxWorkerCount,
             'notifications' => $notifications,
+            'workerForUser' => $workerForUser,
         ]);
     }
 
@@ -51,6 +53,10 @@ class DashboardController extends Controller
 
     public function getActiveWorkerWithoutRelation() {
         return CurrentWorker::where(['ended_at' => null, 'client_id' => Auth::user()->client_id, 'related_id' => null])->orderBy('item_id')->get();
+    }
+
+    public function getActiveWorkerForCurrentUser() {
+        return CurrentWorker::where(['ended_at' => null, 'client_id' => Auth::user()->client_id, 'user_id' => Auth::user()->id])->first();
     }
 
     public function getCountActiveWorkers() {
