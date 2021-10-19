@@ -38,12 +38,12 @@ composer install
 ```
 
 ## Screenshots
-![Dashboard](https://postimg.cc/hz9kzrQd)
-![Newsübersicht](https://postimg.cc/3dc3HtX8)
-![Ausbildungen freigeschaltet](https://postimg.cc/rd6cDzZ7)
-![Userübersicht (Admin)](https://postimg.cc/G9MCkXSF/dfbd1c7c)
-![News erstellen (Admin)](https://postimg.cc/XZ0SVmpb)
-![Profil](https://postimg.cc/HVJfbdMm)
+![Dashboard](https://i.postimg.cc/zXDYj1S8/Bildschirmfoto-2021-10-19-um-02-31-00.png)
+![Newsübersicht](https://i.postimg.cc/HLyqxWH4/Bildschirmfoto-2021-10-19-um-02-31-10.png)
+![Ausbildungen freigeschaltet](https://i.postimg.cc/wBMBbmXx/Bildschirmfoto-2021-10-19-um-02-31-21.png)
+![Userübersicht (Admin)](https://i.postimg.cc/PJt92mD2/Bildschirmfoto-2021-10-19-um-02-31-33.png)
+![News erstellen (Admin)](https://i.postimg.cc/vHZCntbm/Bildschirmfoto-2021-10-19-um-02-31-50.png)
+![Profil](https://i.postimg.cc/dtNpjZVj/Bildschirmfoto-2021-10-19-um-02-32-02.png)
 
 
 ## License
