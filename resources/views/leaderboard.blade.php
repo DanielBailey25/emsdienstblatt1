@@ -29,7 +29,13 @@
                                         @else
                                             <td><span style="font-size: 1.5rem;">🥉</span></td>
                                         @endif
-                                        <td>{{App\Models\User::find($userId)->name}}</td>
+                                        @if ($loop->index == 0)
+                                            <td style="color: gold">{{App\Models\User::find($userId)->name}}</td>
+                                        @elseif ($loop->index == 1)
+                                            <td style="color: silver">{{App\Models\User::find($userId)->name}}</td>
+                                        @else
+                                            <td style="color: #FF5733">{{App\Models\User::find($userId)->name}}</td>
+                                        @endif
                                         <td>{{Carbon\CarbonInterval::minutes($countInMinutes)->cascade()->forHumans()}}</td>
                                     </tr>
                                @endforeach
