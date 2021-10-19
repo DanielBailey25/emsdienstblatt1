@@ -22,7 +22,7 @@
                             <tbody>
                                <tr>
                                     <td><span style="font-size: 1.5rem;">🥇</span></td>
-                                    <td>In Bearbeitung</td>
+                                    <td>In Arbeit</td>
                                     <td></td>
                                </tr>
                                <tr>
@@ -85,7 +85,7 @@
                             <tbody>
                                <tr>
                                     <td><span style="font-size: 1.5rem;">🥇</span></td>
-                                    <td>In Bearbeitung</td>
+                                    <td>In Arbeit</td>
                                     <td></td>
                                </tr>
                                <tr>

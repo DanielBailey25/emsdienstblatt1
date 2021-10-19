@@ -28,7 +28,7 @@ class LeaderboardController extends Controller
             arsort($lifetime);
         }
         $lifetimeUser = $lifetime[Auth::user()->id];
-        array_slice($lifetime, 0, 3);
+        $lifetime = array_slice($lifetime, 0, 3);
         return view('leaderboard', [
             'lifetime' => $lifetime,
             'lifetimeUser' => $lifetimeUser,
