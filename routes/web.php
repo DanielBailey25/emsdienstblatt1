@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/start', [App\Http\Controllers\CurrentWorkerController::class, 'index'])->name('startWorker');
     Route::get('/status/change', [App\Http\Controllers\CurrentWorkerController::class, 'changeStatus'])->name('changeStatus');
 
-    Route::get('/leaderboard', [App\Http\Controllers\LeadeboardController::class, 'index'])->name('leaderboard');
+    Route::get('/leaderboard', [App\Http\Controllers\LeaderboardController::class, 'index'])->name('leaderboard');
 
     Route::prefix('form')->group(function () {
         Route::post('/currentworker/start', [App\Http\Controllers\CurrentWorkerController::class, 'startWorker'])->name('formStartWorker');
