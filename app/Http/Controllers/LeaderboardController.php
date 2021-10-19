@@ -20,8 +20,8 @@ class LeaderboardController extends Controller
             }
             $countMinutes = 0;
             foreach ($workers as $worker) {
-                $started =  Carbon::parse($worker->started_at);
-                $ended =  Carbon::parse($worker->ended_at);
+                $started = Carbon::parse($worker->started_at);
+                $ended = ($worker->ended_at == null) ? Carbon::now() :  Carbon::parse($worker->ended_at);
                 $countMinutes += $started->diffInMinutes($ended);
             }
             $lifetime[$userId] = $countMinutes;
@@ -39,7 +39,7 @@ class LeaderboardController extends Controller
             $countMinutes = 0;
             foreach ($workers as $worker) {
                 $started =  Carbon::parse($worker->started_at);
-                $ended =  Carbon::parse($worker->ended_at);
+                $ended = ($worker->ended_at == null) ? Carbon::now() :  Carbon::parse($worker->ended_at);
                 $countMinutes += $started->diffInMinutes($ended);
             }
             $month[$userId] = $countMinutes;
@@ -57,7 +57,7 @@ class LeaderboardController extends Controller
             $countMinutes = 0;
             foreach ($workers as $worker) {
                 $started =  Carbon::parse($worker->started_at);
-                $ended =  Carbon::parse($worker->ended_at);
+                $ended = ($worker->ended_at == null) ? Carbon::now() :  Carbon::parse($worker->ended_at);
                 $countMinutes += $started->diffInMinutes($ended);
             }
             $week[$userId] = $countMinutes;
