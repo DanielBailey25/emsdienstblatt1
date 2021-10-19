@@ -24,6 +24,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
 
+    Route::get('/warn/idle', [App\Http\Controllers\IdleWarnController::class, 'index'])->name('idleWarnIndex');
+    Route::get('/warn/idle/seen', [App\Http\Controllers\IdleWarnController::class, 'markAsSeen'])->name('seenIdleWarn');
+
     Route::get('/start', [App\Http\Controllers\CurrentWorkerController::class, 'index'])->name('startWorker');
     Route::get('/status/change', [App\Http\Controllers\CurrentWorkerController::class, 'changeStatus'])->name('changeStatus');
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    @if (Route::currentRouteName() == 'home')
+    @if (Route::currentRouteName() == 'home' || Route::currentRouteName() == 'idleWarnIndex')
         <meta http-equiv="refresh" content="30">
     @endif
 

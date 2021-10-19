@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CheckIfIdleWarnExists;
 use App\Http\Middleware\FetchTrainings;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 

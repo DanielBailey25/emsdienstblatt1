@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\AssignedControlCenter;
 use App\Models\CurrentWorker;
+use App\Models\IdleWarn;
 use App\Models\Item;
 use App\Models\Notification;
 use App\Models\NotificationRead;
 use App\Models\Training;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -21,6 +23,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        if($this->checkIfIdleWarnExists()) {
+            return redirect()->route('idleWarnIndex');
+        }
+
         $currentWorker = $this->getActiveWorkerWithoutRelation();
         $maxWorkerCount = $this->getCountActiveWorkers();
         $notifications = $this->notificationForUser();
@@ -32,6 +38,23 @@ class DashboardController extends Controller
             'notifications' => $notifications,
             'workerForUser' => $workerForUser,
         ]);
+    }
+
+    public function checkIfIdleWarnExists() {
+        $user = Auth::user();
+        $warn = IdleWarn::where([
+            'warned_user_id' => $user->id,
+            'seen' => false,
+        ])->first();
+        $currentWorker = CurrentWorker::where(['user_id' => $user->id, 'ended_at' => null])->where('started_at', '<=', Carbon::now()->subHours(3)->toDateTimeString())->first();
+        if($warn && $currentWorker) {
+            return true;
+        }
+        if($warn) {
+            $warn->seen = true;
+            $warn->save();
+        }
+        return false;
     }
 
     public function notificationForUser() {
