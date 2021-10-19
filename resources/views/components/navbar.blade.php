@@ -28,6 +28,10 @@
                     <i class="fs-5 bi-newspaper"></i><span class="ms-2 d-none d-sm-inline">News</span> </a>
             </li>
             <li>
+                <a href="{{ route('leaderboard') }}" class="nav-link px-sm-0 px-2">
+                    <i class="fs-5 bi-bar-chart-line-fill"></i><span class="ms-2 d-none d-sm-inline">Leaderboard</span> </a>
+            </li>
+            <li>
                 <hr class="dropdown-divider">
             </li>
             <li class="nav-item">
