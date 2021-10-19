@@ -30,7 +30,7 @@ class LeaderboardController extends Controller
         $lifetimeUser = isset($lifetime[Auth::user()->id]) ? $lifetime[Auth::user()->id] : 0;
         $lifetime = array_slice($lifetime, 0, 3, true);
 
-        $userIdStats = CurrentWorker::where('ended_at', '>=', Carbon::now()->subMonth(1)->toDateTimeString())->get()->groupBy('user_id');
+        $userIdStats = CurrentWorker::where('started_at', '>=', Carbon::now()->subMonth(1)->toDateTimeString())->get()->groupBy('user_id');
         $month = [];
         foreach($userIdStats as $userId => $workers) {
             if (!User::find($userId)) {
@@ -48,7 +48,7 @@ class LeaderboardController extends Controller
         $monthUser = isset($month[Auth::user()->id]) ? $month[Auth::user()->id] : 0;
         $month = array_slice($month, 0, 3, true);
 
-        $userIdStats = CurrentWorker::where('ended_at', '>=', Carbon::now()->subWeek(1)->toDateTimeString())->get()->groupBy('user_id');
+        $userIdStats = CurrentWorker::where('started_at', '>=', Carbon::now()->subWeek(1)->toDateTimeString())->get()->groupBy('user_id');
         $week = [];
         foreach($userIdStats as $userId => $workers) {
             if (!User::find($userId)) {
