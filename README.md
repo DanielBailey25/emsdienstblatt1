@@ -1,9 +1,15 @@
 # Dienstblatt
-Ein Projekt um die Verwaltung von medizinischen Angestellten im Spiel GTA 5 (GTA 5 RolePlay) einfacher zu machen.
+Ein Projekt welches ich in meiner Freizeit geschaffen haben um die Verwaltung von medizinischen Angestellten im Spiel GTA 5 (GTA 5 RolePlay) einfacher zu machen.
 
 Das Dienstblatt wird zurzeit auf dem deutschen [Grand-RP](https://gta5grand.com/) Server mit rund 1000 Spielern genutzt. Die Anzahl der aktiven User vom Dienstblatt beträgt 113 (Stand: 19.10.2021).
 
 Sinn und Zweck des Projektes ist es ein einfach zu verwaltendes Backend für die Leitungsebene der Medics zu schaffen.
+## Information
+
+Das ist ein privates Project welches ich in meiner Freizeit programmiert habe. Erwartungsgemäß sind viele Sachen nicht so wie ich sie in einem echten Projekt umsetzen würde. Es konnte vorher leider kein Konzept erstellt werden und deshalb wurde manches sehr umständlich gelöst.
+
+Der Code beinhaltet zurzeit noch viel alten ungenutzten Code, welcher noch aus einem anderen Project stammt, da ürsprünglich das Dienstblatt für einen anderen Server gedacht war.
+Viele alte Features vom altem Server werden auf dem jetzigen Server nicht mehr gebraucht.
 
 ## Features (User)
 
