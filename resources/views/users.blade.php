@@ -23,10 +23,10 @@
                     </div>
                 @endif
                 @foreach ($users as $user)
-                    <div class='card bg-grey mb-3'>
+                    <div class='card bg-grey mb-3' id="userColumn{{$user->id}}">
                         <div class='card-body'>
                             <div class='row'>
-                                <div class='col-5 mb-1' id="userColumn{{$user->id}}">
+                                <div class='col-5 mb-1'>
                                     {{$user->name}}
                                     <span class="badge bg-secondary">Rang {{$user->rank}}</span>
                                     <a href="{{route('userIncreaseRank', $user->id)}}"><span class="badge bg-secondary bg-success">+</span></a>
