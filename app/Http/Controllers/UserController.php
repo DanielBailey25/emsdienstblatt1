@@ -134,7 +134,7 @@ class UserController extends Controller
             return redirect()->route('users');
         }
         $user->increment('rank', 1);
-        return redirect()->route('users', ['#userColumn'.$id])->with('message', $user->name . ' wurde auf Rang ' . $user->rank . ' angehoben.');
+        return redirect()->route('users', ['#userColumn'.$id])->with('message', $user->name . ' wurde auf Rang ' . $user->rank . ' angehoben.')->with('lastUserId', $id);
     }
 
     public function decreaseRank($id) {
@@ -143,6 +143,6 @@ class UserController extends Controller
             return redirect()->route('users');
         }
         $user->decrement('rank', 1);
-        return redirect()->route('users', ['#userColumn'.$id])->with('message', $user->name . ' wurde auf Rang ' . $user->rank . ' herabgesenkt.');
+        return redirect()->route('users', ['#userColumn'.$id])->with('message', $user->name . ' wurde auf Rang ' . $user->rank . ' herabgesenkt.')->with('lastUserId', $id);
     }
 }
