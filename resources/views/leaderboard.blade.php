@@ -16,7 +16,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Stunden</th>
+                                    <th>Dienstzeit</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,7 +56,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Stunden</th>
+                                    <th>Dienstzeit</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -96,7 +96,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Stunden</th>
+                                    <th>Dienstzeit</th>
                                 </tr>
                             </thead>
                             <tbody>
