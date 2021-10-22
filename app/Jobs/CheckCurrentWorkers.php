@@ -60,7 +60,9 @@ class CheckCurrentWorkers implements ShouldQueue
             //Notify warned user;
             Notification::create([
                 'title' => 'Systembenachrichtigung',
-                'content' => 'Du wurdest am ' . $warn->readableNow() . ' aufgrund von Inaktivität automatisch aus dem Dashboard geworfen.',
+                'content' => 'Du wurdest am ' . $warn->readableNow() . ' aufgrund von Inaktivität automatisch aus dem Dashboard geworfen.
+
+                Die letzten zwei Stunden wurden aus dem Leaderboard entfernt.',
                 'notified_user_id' => $warn->warned_user_id,
             ]);
             Log::create([
@@ -70,7 +72,11 @@ class CheckCurrentWorkers implements ShouldQueue
 
             $currentWorker = CurrentWorker::where(['user_id'=> $warn->warned_user_id, 'ended_at'=> null])->first();
             if ($currentWorker) {
-                $currentWorker->stopWorker();
+                if (Carbon::parse($currentWorker->ended_at) < Carbon::now()->subHour(2)->toDateTimeString()) {
+                    $currentWorker->stopWorker(Carbon::now()->subHour(2)->toDateTimeString());
+                } else {
+                    $currentWorker->stopWorker();
+                }
             }
         }
     }

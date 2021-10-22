@@ -29,7 +29,12 @@ class CurrentWorker extends Model
         'ended_at',
     ];
 
-    public function stopWorker() {
+    public function stopWorker($ended_at = null) {
+        $warn = IdleWarn::where(['warned_user_id' => $this->user_id, 'seen' => false])->first();
+        if ($warn) {
+            $warn->seen = true;
+            $warn->save();
+        }
         $relatedWorker = CurrentWorker::where(['related_id' => $this->id, 'ended_at' => null])->get();
 
         // If one related current worker are available, make first one as starter.
@@ -41,7 +46,7 @@ class CurrentWorker extends Model
                 $relatedId = $worker->id;
             }
         }
-        $this->ended_at = Carbon::now()->toDateTimeString();
+        $this->ended_at = $ended_at ?? Carbon::now()->toDateTimeString();
         $this->save();
     }
 
