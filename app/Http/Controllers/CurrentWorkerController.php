@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CurrentWorker;
 use App\Models\Item;
 use App\Models\ItemType;
+use App\Models\Notification;
 use App\Models\State;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -71,6 +72,13 @@ class CurrentWorkerController extends Controller
     public function stopWorkerById($id) {
         $worker = CurrentWorker::find($id);
         if ($worker) {
+            if ($worker->user_id != Auth::user()->id) {
+                Notification::create([
+                    'title' => 'Du wurdest von einem Admin ausgetragen',
+                    'content' => 'Du wurdest am ' . Carbon::now()->timezone('Europe/Stockholm')->isoFormat('DD.MM.YYYY HH:ss') . ' aufgrund von Inaktivität von einem Admin aus dem Dashboard ausgetragen.',
+                    'notified_user_id' => $worker->user_id,
+                ]);
+            }
             $worker->stopWorker();
         }
         return redirect()->route('home');

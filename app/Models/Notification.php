@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Notification extends Model
 {
@@ -13,6 +14,8 @@ class Notification extends Model
     protected $fillable = [
         'content',
         'created_by_user_id',
+        'notified_user_id',
+        'notified_role',
         'title',
         'isNews',
     ];
@@ -22,6 +25,27 @@ class Notification extends Model
     }
 
     public function readableCreatedAt() {
-        return Carbon::parse($this->created_at)->timezone('Europe/Stockholm')->isoFormat('DD.MM.YYYY HH:mm');
+        return Carbon::now()->timezone('Europe/Stockholm')->isoFormat('DD.MM.YYYY HH:mm');
+    }
+
+    public function isNotifiedUser() {
+        if ($this->notified_user_id == Auth::user()->id) {
+            return true;
+        }
+        return false;
+    }
+
+    public function isNotifiedUserRole() {
+        if ($this->notified_role != null && User::find(Auth::user()->id)->hasRole($this->notified_role)) {
+            return true;
+        }
+        return false;
+    }
+
+    public function isPublic() {
+        if ($this->notified_user_id == null && $this->notified_role == null) {
+            return true;
+        }
+        return false;
     }
 }
