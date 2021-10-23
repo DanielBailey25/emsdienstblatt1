@@ -7,7 +7,7 @@
 
     <div class="col d-flex flex-column h-sm-100">
         <div class='row py-4'>
-            <div class='col-md-9'>
+            <div class='col-md-10'>
                 <h1 class="display-8">Benutzer <span class="badge bg-secondary">{{$users->count()}}</span></h1>
                 <p class="text-white">Bitte nutze deine Rechte mit Bedacht. Das ändern der Rollen tritt mit sofortiger Wirkung in Kraft.</p>
                 @if ($errors->any())
@@ -30,13 +30,13 @@
                 @endif
                         <div class='card-body'>
                             <div class='row'>
-                                <div class='col-5 mb-1 text-white'>
+                                <div class='col-4 mb-1 text-white'>
                                     {{$user->name}}
                                     <span class="badge bg-secondary">Rang {{$user->rank}}</span>
                                     <a href="{{route('userIncreaseRank', $user->id)}}"><span class="badge bg-secondary bg-success">+</span></a>
                                     <a href="{{route('userDecreaseRank', $user->id)}}"><span class="badge bg-secondary bg-danger">-</span></a>
                                 </div>
-                                <div class='col-md-5 mb-1'>
+                                <div class='col-md-4 mb-1'>
                                     <select name="state_id" class="form-select bg-light" onchange="changeRole(this)" data-user="{{$user->id}}">
                                         @foreach ($roles as $role)
                                             @if ($user->hasRole($role->name))
@@ -47,7 +47,8 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-4 d-flex justify-content-between">
+                                    <button type="button" class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#resetPasswordModal_{{$user->id}}">Reset Passwort</button>
                                     <button type="button" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#deleteUserModal_{{$user->id}}">Entfernen</button>
                                 </div>
                                 <div class="modal fade" id="deleteUserModal_{{$user->id}}" tabindex="-1" aria-labelledby="deleteUser" aria-hidden="true">
@@ -65,13 +66,29 @@
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
+                                </div>
+                                <div class="modal fade" id="resetPasswordModal_{{$user->id}}" tabindex="-1" aria-labelledby="deleteUser" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content bg-grey">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="">Passwort zurücksetzen?</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                          Möchtest du wirklich das Passwort von "{{$user->name}}" zurücksetzen?<br>Das neue Passwort wird dann "<strong class="text-danger">einfach</strong>" sein.
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
+                                          <a href="{{route('resetPassword', $user->id)}}"><button type="button" class="btn btn-danger text-white">Reset</button></a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <form action="{{route('addUserView')}}">
                     <button style="float: right" type="submit" class="btn btn-success text-white">hinzufügen</button>
                 </form>

@@ -38,7 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/switchItemClosedState', [App\Http\Controllers\DashboardController::class, 'switchItemClosedState'])->name('switchItemClosedState');
         Route::post('/centerChangeAssignment', [App\Http\Controllers\DashboardController::class, 'centerChangeAssignment'])->name('centerChangeAssignment');
         Route::post('/absence', [App\Http\Controllers\AbsenceController::class, 'createAbsence'])->name('formCreateAbsence');
-        Route::post('/user/change/password', [App\Http\Controllers\UserController::class, 'changePassword'])->name('changePassword');
+        Route::post('/user/password/', [App\Http\Controllers\UserController::class, 'changePassword'])->name('changePassword');
         Route::post('/user/change/info', [App\Http\Controllers\UserController::class, 'changeInformation'])->name('changeInformation');
         Route::post('/user/change/role', [App\Http\Controllers\UserController::class, 'changeRole'])->name('changeRole');
     });
@@ -65,6 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/user/{id}/rank/increase', [App\Http\Controllers\UserController::class, 'increaseRank'])->name('userIncreaseRank');
             Route::get('/user/{id}/rank/decrease', [App\Http\Controllers\UserController::class, 'decreaseRank'])->name('userDecreaseRank');
             Route::get('/user/{id}/remove', [App\Http\Controllers\UserController::class, 'removeUser'])->name('removeUser');
+            Route::get('/user/{id}/password/reset', [App\Http\Controllers\UserController::class, 'resetPassword'])->name('resetPassword');
 
             Route::get('/warns', [App\Http\Controllers\WarnsController::class, 'show'])->name('showWarns');
             Route::get('/warns/delete/{id}', [App\Http\Controllers\WarnsController::class, 'delete'])->name('deleteWarn');

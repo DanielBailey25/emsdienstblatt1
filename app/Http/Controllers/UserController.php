@@ -128,6 +128,16 @@ class UserController extends Controller
         return redirect()->route('users')->with('message', $user->name . ' wurde erfolgreich gelöscht.');
     }
 
+    public function resetPassword($id) {
+        $user =User::find($id);
+        if ($user) {
+            $user->password = Hash::make('einfach');
+            $user->save();
+            return redirect()->route('users')->with('message', 'Das Passwort von "' . $user->name . '" wurde erfolgreich zurückgesetzt.');
+        }
+        return redirect()->route('users')->with('message', 'Der User konnte nicht gefunden werden.');
+    }
+
     public function increaseRank($id) {
         $user = User::find($id);
         if (!$user || $user->rank >= 12) {
