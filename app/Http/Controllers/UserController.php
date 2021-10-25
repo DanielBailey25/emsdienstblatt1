@@ -32,14 +32,12 @@ class UserController extends Controller
     public function createUser(Request $request) {
         $request->validate([
             'name' => 'required|max:255',
-            'password' => 'required|min:6',
             'rank' => 'required|integer|min:0|max:12',
             'player_id' => 'required|integer|unique:users,player_id,id',
             'phone' => 'nullable|regex:/\d{2}-\d{2}-\d{3}/',
             'role' => 'required',
         ],[], [
             'name' => 'Name',
-            'password' => 'Passwort',
             'rank' => 'Rank',
             'player_id' => 'Einreise-ID',
             'phone' => 'Telefonnummer',
@@ -48,7 +46,7 @@ class UserController extends Controller
         $user = User::create(
         [
             'name' => $request->input('name'),
-            'password' => Hash::make($request->input('password')),
+            'password' => Hash::make('einfach'),
             'rank' => $request->input('rank'),
             'player_id' => $request->input('player_id'),
             'phone' => $request->input('phone'),
