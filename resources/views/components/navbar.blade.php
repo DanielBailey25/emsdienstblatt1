@@ -77,7 +77,7 @@
                             <li><a class="dropdown-item" href="{{route('createTraining')}}">Ausbildung hinzufügen</a></li>
                             <li><a class="dropdown-item" href="{{ route('users') }}">Benutzer verwalten</a></li>
                             <li><a class="dropdown-item" href="{{route('showWarns')}}">Verwarnungen</a></li>
-                            <li><a class="dropdown-item" href="{{route('showToBeConfirmed')}}">Bestätigungen</a></li>
+                            <li><a class="dropdown-item" href="{{route('showToBeConfirmed')}}">Namensänderungen</a></li>
                         @endhasrole
                         <li><a class="dropdown-item" href="{{route('addNews')}}">News hinzufügen</a></li>
                     </ul>
