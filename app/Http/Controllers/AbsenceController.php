@@ -16,7 +16,7 @@ class AbsenceController extends Controller
     }
 
     public function showAbsences() {
-        $absences = Absence::whereIn('absence_type_id', [1,2,3])->whereDate('to', '>=', Carbon::today()->toDateString())->get();
+        $absences = Absence::has('user')->whereIn('absence_type_id', [1,2,3])->whereDate('to', '>=', Carbon::today()->toDateString())->get();
 
         return view('absences', ['absences' => $absences]);
     }
