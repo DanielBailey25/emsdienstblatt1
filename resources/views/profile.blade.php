@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="form-text">Ein Admin wird diese Änderung noch bestätigen müssen.</div>
                                 <div class="col-6 mt-3">
-                                    <button type="submit" class="btn btn-primary text-white">Namen ändern</button>
+                                    <button type="submit" class="btn btn-primary text-white">Namensänderung beantragen</button>
                                 </div>
                             </form>
                         </div>
