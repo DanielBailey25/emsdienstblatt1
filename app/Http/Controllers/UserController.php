@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Exception;
 use App\Models\CurrentWorker;
+use App\Models\Notification;
+use App\Models\ToBeConfirmed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -154,5 +156,32 @@ class UserController extends Controller
         }
         $user->decrement('rank', 1);
         return redirect()->route('users', ['#userColumn'.$id])->with('message', $user->name . ' wurde auf Rang ' . $user->rank . ' herabgesenkt.')->with('lastUserId', $id);
+    }
+
+    public function changeName(Request $request) {
+        $request->validate([
+            'name' => 'required|string|max:200',
+        ]);
+        if (Auth::user()->name == $request->name) {
+            return redirect()->route('profile');
+        }
+
+        $notification = Notification::create([
+            'content' => 'Es gibt einen neuen Antrag zur Namensänderung.
+            Du kannst diesen unter Administration->Bestätigungen, bestätigen oder ablehnen.',
+            'title' => 'Neuer Antrag zur Namensänderung',
+            'notified_role' => 'Admin',
+        ]);
+
+        ToBeConfirmed::create([
+            'request_user_id' => Auth::user()->id,
+            'type' => 1,
+            'notification_id' => $notification->id,
+            'old_value' => Auth::user()->name,
+            'new_value' => $request->get('name'),
+            'client_id' => Auth::user()->client_id,
+        ]);
+
+        return redirect()->route('profile')->with('message', 'Dein Antrag auf eine Namensänderung wurde den Admins eingereicht.');
     }
 }

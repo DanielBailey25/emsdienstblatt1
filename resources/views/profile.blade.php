@@ -59,6 +59,27 @@
                 <div class='card bg-grey'>
                     <div class='card-body'>
                         <div class="row">
+                            <form method="POST" action="{{route('changeName')}}">
+                                @csrf
+                                <div class="col-6">
+                                    Name:
+                                </div>
+                                <div class="col-6">
+                                    <input required class="form-control" type="text" name="name" value="{{$user->name}}">
+                                </div>
+                                <div class="form-text">Ein Admin wird diese Änderung noch bestätigen müssen.</div>
+                                <div class="col-6 mt-3">
+                                    <button type="submit" class="btn btn-primary text-white">Namen ändern</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-6 py-3'>
+                <div class='card bg-grey'>
+                    <div class='card-body'>
+                        <div class="row">
                             <form method="POST" action="{{route('changeInformation')}}">
                                 @csrf
                                 <div class="col-6">
@@ -66,10 +87,10 @@
                                 </div>
                                 <div class="col-6">
                                     <input required class="form-control" type="text" name="phone" value="{{$user->phone}}">
-                                    <div class="form-text">Bitte im folgenden Format angeben: 12-34-567</div>
                                 </div>
+                                <div class="form-text">Bitte im folgenden Format angeben: 12-34-567</div>
                                 <div class="col-6 mt-3">
-                                    <button type="submit" class="btn btn-primary text-white">Ändern</button>
+                                    <button type="submit" class="btn btn-primary text-white">Telefonnummer ändern</button>
                                 </div>
                             </form>
                         </div>

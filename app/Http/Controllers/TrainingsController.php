@@ -31,7 +31,7 @@ class TrainingsController extends Controller
         Training::create([
             'title' => $request->input('title'),
             'file' => $filename,
-            'is_public' => ($request->input('isPublic') != null)  ? true : false,
+            'is_public' => true,
             'client_id' => Auth::user()->client_id,
         ]);
 

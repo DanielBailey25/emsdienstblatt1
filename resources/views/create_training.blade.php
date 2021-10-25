@@ -34,10 +34,6 @@
                                 <input required type="file" class="form-control bg-light" name="file">
                                 <div id="uploadFileHelp" class="form-text">pdf, jpeg, jpg, png</div>
                             </div>
-                            <div class="form-group mt-3">
-                                <input class="form-check-input" type="checkbox" value="true" id="checkbox" name="isPublic">
-                                <label class="form-check-label" for="checkbox"> Öffentlich für alle zugänglich</label>
-                            </div>
                             <div class="form-group mt-4">
                                 <input type="submit" class="btn btn-primary text-white" name="submit" value="Erstellen" />
                             </div>

@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/absence', [App\Http\Controllers\AbsenceController::class, 'createAbsence'])->name('formCreateAbsence');
         Route::post('/user/password/', [App\Http\Controllers\UserController::class, 'changePassword'])->name('changePassword');
         Route::post('/user/change/info', [App\Http\Controllers\UserController::class, 'changeInformation'])->name('changeInformation');
+        Route::post('/user/change/name', [App\Http\Controllers\UserController::class, 'changeName'])->name('changeName');
         Route::post('/user/change/role', [App\Http\Controllers\UserController::class, 'changeRole'])->name('changeRole');
     });
 
@@ -66,6 +67,10 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/user/{id}/rank/decrease', [App\Http\Controllers\UserController::class, 'decreaseRank'])->name('userDecreaseRank');
             Route::get('/user/{id}/remove', [App\Http\Controllers\UserController::class, 'removeUser'])->name('removeUser');
             Route::get('/user/{id}/password/reset', [App\Http\Controllers\UserController::class, 'resetPassword'])->name('resetPassword');
+
+            Route::get('/confirmations', [App\Http\Controllers\ToBeConfirmedController::class, 'showToBeConfirmed'])->name('showToBeConfirmed');
+            Route::get('/confirmation/{id}/accept', [App\Http\Controllers\ToBeConfirmedController::class, 'acceptConfirmation'])->name('acceptConfirmation');
+            Route::get('/confirmation/{id}/decline', [App\Http\Controllers\ToBeConfirmedController::class, 'declineConfirmation'])->name('declineConfirmation');
 
             Route::get('/warns', [App\Http\Controllers\WarnsController::class, 'show'])->name('showWarns');
             Route::get('/warns/delete/{id}', [App\Http\Controllers\WarnsController::class, 'delete'])->name('deleteWarn');
