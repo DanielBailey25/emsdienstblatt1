@@ -27,7 +27,8 @@
                                 </div>
                                 <div class="form-group mt-2">
                                     <label for="name">Passwort</label>
-                                    <input required type="password" class="form-control bg-light" name="password"  rows="1">
+                                    <input disabled required type="text" value="einfach" class="form-control bg-light" name="password"  rows="1">
+                                    <div class="form-text">Das Passwort eines neuen Nutzers ist immer "einfach"</div>
                                 </div>
                                 <div class="form-group mt-2">
                                     <label for="name">Rank</label>
