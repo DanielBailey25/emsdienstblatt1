@@ -27,7 +27,7 @@ class DashboardController extends Controller
             return redirect()->route('idleWarnIndex');
         }
 
-        $currentWorker = $this->getActiveWorkerWithoutRelation();
+        $currentWorker = $this->getActiveWorker();
         $maxWorkerCount = $this->getCountActiveWorkers();
         $notifications = $this->notificationForUser();
         $workerForUser = $this->getActiveWorkerForCurrentUser();
@@ -37,6 +37,7 @@ class DashboardController extends Controller
             'maxWorkerCount' => $maxWorkerCount,
             'notifications' => $notifications,
             'workerForUser' => $workerForUser,
+            'items' => Item::all(),
         ]);
     }
 
@@ -74,8 +75,8 @@ class DashboardController extends Controller
         return redirect()->route('home')->with('message', 'Die Benachrichtigung wurde als gelesen markiert.');
     }
 
-    public function getActiveWorkerWithoutRelation() {
-        return CurrentWorker::where(['ended_at' => null, 'client_id' => Auth::user()->client_id, 'related_id' => null])->orderBy('item_id')->get();
+    public function getActiveWorker() {
+        return CurrentWorker::where(['ended_at' => null, 'client_id' => Auth::user()->client_id])->orderBy('item_id')->get();
     }
 
     public function getActiveWorkerForCurrentUser() {

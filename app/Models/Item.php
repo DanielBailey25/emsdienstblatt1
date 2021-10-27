@@ -23,4 +23,8 @@ class Item extends Model
     public function type() {
         return $this->belongsTo(ItemType::class, 'item_type_id');
     }
+
+    public function workers() {
+        return $this->belongsTo(CurrentWorker::class, 'id', 'item_id')->where('ended_at', null)->get();
+    }
 }

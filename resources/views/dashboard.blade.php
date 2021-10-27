@@ -35,13 +35,6 @@
             @endif
         @endforeach
         <div class="row row-cols-auto">
-            @if($currentWorker->count() == 0)
-                <div class="col-md py-4">
-                    <div class="alert alert-primary" role="alert">
-                        Es ist zurzeit keine Einheit im Dienst.
-                    </div>
-                </div>
-            @else
             <div class="col-12">
                 <div class="row">
                     <div class="col-md-2 mb-3">
@@ -60,64 +53,51 @@
                     @endif
                 </div>
             </div>
-                @foreach($currentWorker as $worker)
-                    <div class="col-12 col-lg-6 col-md-12 col-xl-6 col-xxl-4 mb-4">
-                        <div class="card bg-light">
-                            <div class="card-header @if($worker->item->type->id == 1) bg-primary @else bg-danger @endif text-white">{{ $worker->item->name }}<form action={{route('formStartWorker')}} method="POST" id="currentWorkTileButton_{{$worker->id}}">@csrf<input type='hidden' value=1 name='state_id'><input type='hidden' value={{$worker->item_id}} name='item_id'><span onclick="getElementById('currentWorkTileButton_{{$worker->id}}').submit();" class="lh-sm badge rounded-pill bg-dark makeClickable assignToCurrentWorkerButton" style="font-size: 12px">Eintragen</span></form></div>
-                            <div class="card-body-md">
-                                <div class='table-responsive'>
-                                    <table class="table text-white table-nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">R</th>
-                                                <th scope="col">E-ID</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Code</th>
-                                                <th scope="col">Beginn</th>
-                                                @hasrole ('Admin')
-                                                <th scope="col"></th>
-                                                @endhasrole
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if ($worker->state->id == 5)
-                                              <tr class="table-danger">
-                                            @else
-                                              <tr>
-                                            @endif
-                                                <th>{{ $worker->user->rank }}</th>
-                                                <td>{{ $worker->user->player_id }}</td>
-                                                <td>{{ $worker->user->name }}</td>
-                                                <td>{{ $worker->state->name }}</td>
-                                                <td>{{ $worker->readableStartedAtDiff() }}</td>
-                                                @hasrole ('Admin')
-                                                <td><a href="{{route('stopWorkerById', $worker->id)}}"><span class="badge bg-secondary bg-danger">austragen</span></a></td>
-                                                @endhasrole
-                                            </tr>
-                                            @foreach ($worker->related() as $subWorker)
-                                            @if ($subWorker->state->id == 5)
+            @foreach ($items as $item)
+                <div class="col-12 col-lg-6 col-md-12 col-xl-6 col-xxl-4 mb-4">
+                    <div class="card bg-light">
+                        <div class="card-header @if($item->workers()->isEmpty()) bg-grey-light @elseif($item->type->id == 1) bg-primary @else bg-danger @endif text-white">{{ $item->name }}<form action={{route('formStartWorker')}} method="POST" id="currentWorkTileButton_{{$item->id}}">@csrf<input type='hidden' value=1 name='state_id'><input type='hidden' value={{$item->id}} name='item_id'><span onclick="getElementById('currentWorkTileButton_{{$item->id}}').submit();" class="lh-sm badge rounded-pill bg-dark makeClickable assignToCurrentWorkerButton" style="font-size: 12px">Eintragen</span></form></div>
+                        <div class="card-body-md">
+                            <div class='table-responsive'>
+                                <table class="table text-white table-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">R</th>
+                                            <th scope="col">E-ID</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Code</th>
+                                            <th scope="col">Beginn</th>
+                                            @hasrole ('Admin')
+                                            <th scope="col"></th>
+                                            @endhasrole
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($currentWorker as $worker)
+                                            @if ($worker->item_id == $item->id)
+                                                @if ($worker->state->id == 5)
                                                 <tr class="table-danger">
-                                            @else
+                                                @else
                                                 <tr>
+                                                @endif
+                                                    <th>{{ $worker->user->rank }}</th>
+                                                    <td>{{ $worker->user->player_id }}</td>
+                                                    <td>{{ $worker->user->name }}</td>
+                                                    <td>{{ $worker->state->name }}</td>
+                                                    <td>{{ $worker->readableStartedAtDiff() }}</td>
+                                                    @hasrole ('Admin')
+                                                    <td><a href="{{route('stopWorkerById', $worker->id)}}"><span class="badge bg-secondary bg-danger">austragen</span></a></td>
+                                                    @endhasrole
+                                                </tr>
                                             @endif
-                                                <th>{{ $subWorker->user->rank }}</th>
-                                                <td>{{ $subWorker->user->player_id }}</td>
-                                                <td>{{ $subWorker->user->name }}</td>
-                                                <td>{{ $subWorker->state->name }}</td>
-                                                <td>{{ $subWorker->readableStartedAtDiff() }}</td>
-                                                @hasrole ('Admin')
-                                                <td><a href="{{route('stopWorkerById', $subWorker->id)}}"><span class="badge bg-secondary bg-danger">austragen</span></a></td>
-                                                @endhasrole
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                @endforeach
-            @endif
+                </div>
+            @endforeach
         </div>
     </div>
 </div>
