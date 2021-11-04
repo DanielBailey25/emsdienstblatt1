@@ -33,7 +33,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'rank' => 'required|integer|min:0|max:12',
-            'player_id' => 'required|integer|unique:users,player_id,id',
+            'player_id' => 'required|integer|unique:users,player_id',
             'phone' => 'nullable|regex:/\d{2}-\d{2}-\d{3}/',
             'role' => 'required',
         ],[], [
@@ -114,7 +114,11 @@ class UserController extends Controller
             return redirect()->route('users')->withErrors($errors);
         }
         $user = User::find($id);
-
+        if (!$user) {
+            $errors = new MessageBag();
+            $errors->add('cannot_find_user', 'Der Benutzer konnte nicht gefunden werden');
+            return redirect()->route('users')->withErrors($errors);
+        }
         if ($user->is_admin) {
             $errors = new MessageBag();
             $errors->add('user_delete_failed_admin', 'Du kannst deinen Erschaffer nicht stürzen!');

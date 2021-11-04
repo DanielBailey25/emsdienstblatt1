@@ -45,8 +45,8 @@ class ToBeConfirmed extends Model
                     'notified_user_id' => $user->id,
                 ]);
 
-                if ($this->notification_id) {
-                    Notification::find($this->notification_id)->delete();
+                if ($notification = Notification::find($this->notification_id)) {
+                    $notification->delete();
                 }
                 break;
             default:
@@ -59,8 +59,8 @@ class ToBeConfirmed extends Model
         $this->confirmed_by_user_id = Auth::user()->id;
         $this->save();
 
-        if ($this->notification_id) {
-            Notification::find($this->notification_id)->delete();
+        if ($notification = Notification::find($this->notification_id)) {
+            $notification->delete();
         }
 
         if ($this->type == 1) {
