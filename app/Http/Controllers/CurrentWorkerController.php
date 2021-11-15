@@ -75,7 +75,7 @@ class CurrentWorkerController extends Controller
             if ($worker->user_id != Auth::user()->id) {
                 Notification::create([
                     'title' => 'Du wurdest von einem Admin ausgetragen',
-                    'content' => 'Du wurdest am ' . Carbon::now()->timezone('Europe/Stockholm')->isoFormat('DD.MM.YYYY HH:ss') . ' aufgrund von Inaktivität von einem Admin aus dem Dashboard ausgetragen.',
+                    'content' => 'Du wurdest am ' . Carbon::now()->timezone('Europe/Stockholm')->isoFormat('DD.MM.YYYY HH:mm') . ' aufgrund von Inaktivität von einem Admin aus dem Dashboard ausgetragen.',
                     'notified_user_id' => $worker->user_id,
                 ]);
             }

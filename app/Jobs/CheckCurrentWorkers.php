@@ -72,7 +72,7 @@ class CheckCurrentWorkers implements ShouldQueue
 
             $currentWorker = CurrentWorker::where(['user_id'=> $warn->warned_user_id, 'ended_at'=> null])->first();
             if ($currentWorker) {
-                if (Carbon::parse($currentWorker->ended_at) < Carbon::now()->subHour(2)->toDateTimeString()) {
+                if (Carbon::parse($currentWorker->started_at) < Carbon::now()->subHour(2)->toDateTimeString()) {
                     $currentWorker->stopWorker(Carbon::now()->subHour(2)->toDateTimeString());
                 } else {
                     $currentWorker->stopWorker();

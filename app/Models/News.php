@@ -29,6 +29,6 @@ class News extends Model
     }
 
     public function readableStartedAt() {
-        return Carbon::parse($this->created_at)->timezone('Europe/Stockholm')->isoFormat('DD.MM.YYYY HH:ss');
+        return Carbon::parse($this->created_at)->timezone('Europe/Stockholm')->isoFormat('DD.MM.YYYY HH:mm');
     }
 }

@@ -23,10 +23,10 @@ class Absence extends Model
     }
 
     public function readableStartDate() {
-        return Carbon::parse($this->from)->isoFormat('DD.MM.YYYY HH:ss');
+        return Carbon::parse($this->from)->isoFormat('DD.MM.YYYY HH:mm');
     }
 
     public function readableEndDate() {
-        return Carbon::parse($this->to)->isoFormat('DD.MM.YYYY HH:ss');
+        return Carbon::parse($this->to)->isoFormat('DD.MM.YYYY HH:mm');
     }
 }

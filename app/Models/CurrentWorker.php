@@ -71,6 +71,6 @@ class CurrentWorker extends Model
     }
 
     public function readableStartedAt() {
-        return Carbon::parse($this->started_at)->isoFormat('DD.MM.YYYY HH:ss');
+        return Carbon::parse($this->started_at)->isoFormat('DD.MM.YYYY HH:mm');
     }
 }

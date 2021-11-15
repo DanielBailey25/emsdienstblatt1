@@ -16,6 +16,6 @@ class IdleWarn extends Model
     ];
 
     public function readableNow() {
-        return Carbon::now()->timezone('Europe/Stockholm')->isoFormat('DD.MM.YYYY HH:ss');
+        return Carbon::now()->timezone('Europe/Stockholm')->isoFormat('DD.MM.YYYY HH:mm');
     }
 }
