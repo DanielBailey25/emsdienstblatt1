@@ -45,7 +45,6 @@ class LeaderboardController extends Controller
             arsort($month);
         }
         $monthUser = isset($month[Auth::user()->id]) ? $month[Auth::user()->id] : 0;
-        $month = array_slice($month, 0, 3, true);
 
         $userIdStats = CurrentWorker::has('user')->whereBetween('started_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get()->groupBy('user_id');
         $week = [];
@@ -63,7 +62,6 @@ class LeaderboardController extends Controller
             arsort($week);
         }
         $weekUser = isset($week[Auth::user()->id]) ? $week[Auth::user()->id] : 0;
-        $week = array_slice($week, 0, 3, true);
         return view('leaderboard', [
             'lifetime' => $lifetime,
             'lifetimeUser' => $lifetimeUser,
