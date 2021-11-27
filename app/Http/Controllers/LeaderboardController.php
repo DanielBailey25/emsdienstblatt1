@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class LeaderboardController extends Controller
 {
     public function index() {
-        $userIdStats = CurrentWorker::get()->groupBy('user_id');
+        $userIdStats = CurrentWorker::has('user')->get()->groupBy('user_id');
         $lifetime = [];
         foreach($userIdStats as $userId => $workers) {
             if (!User::find($userId)) {
@@ -28,9 +28,8 @@ class LeaderboardController extends Controller
             arsort($lifetime);
         }
         $lifetimeUser = isset($lifetime[Auth::user()->id]) ? $lifetime[Auth::user()->id] : 0;
-        $lifetime = array_slice($lifetime, 0, 3, true);
 
-        $userIdStats = CurrentWorker::whereBetween('started_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->get()->groupBy('user_id');
+        $userIdStats = CurrentWorker::has('user')->whereBetween('started_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->get()->groupBy('user_id');
         $month = [];
         foreach($userIdStats as $userId => $workers) {
             if (!User::find($userId)) {
@@ -48,7 +47,7 @@ class LeaderboardController extends Controller
         $monthUser = isset($month[Auth::user()->id]) ? $month[Auth::user()->id] : 0;
         $month = array_slice($month, 0, 3, true);
 
-        $userIdStats = CurrentWorker::whereBetween('started_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get()->groupBy('user_id');
+        $userIdStats = CurrentWorker::has('user')->whereBetween('started_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get()->groupBy('user_id');
         $week = [];
         foreach($userIdStats as $userId => $workers) {
             if (!User::find($userId)) {

@@ -26,15 +26,19 @@
                                             <td><span style="font-size: 1.5rem;">🥇</span></td>
                                         @elseif ($loop->index == 1)
                                             <td><span style="font-size: 1.5rem;">🥈</span></td>
-                                        @else
+                                        @elseif ($loop->index == 2)
                                             <td><span style="font-size: 1.5rem;">🥉</span></td>
+                                        @else
+                                            <td class="text-center align-middle"><span style="font-size: 1.1rem;">{{$loop->index+1}}</span></td>
                                         @endif
                                         @if ($loop->index == 0)
                                             <td style="color: gold">{{App\Models\User::find($userId)->name}}</td>
                                         @elseif ($loop->index == 1)
                                             <td style="color: silver">{{App\Models\User::find($userId)->name}}</td>
-                                        @else
+                                        @elseif ($loop->index == 2)
                                             <td style="color: #FF5733">{{App\Models\User::find($userId)->name}}</td>
+                                        @else
+                                            <td>{{App\Models\User::find($userId)->name}}</td>
                                         @endif
                                         <td>{{Carbon\CarbonInterval::minutes($countInMinutes)->cascade()->forHumans()}}</td>
                                     </tr>
@@ -51,7 +55,7 @@
                     </div>
                     <div class="col-md-4">
                         <h4>Top 3 Lifetime</h4>
-                        <table class="table table-striped table-hover text-white">
+                        <table class="table table-striped table-hover text-white ">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -66,15 +70,19 @@
                                             <td><span style="font-size: 1.5rem;">🥇</span></td>
                                         @elseif ($loop->index == 1)
                                             <td><span style="font-size: 1.5rem;">🥈</span></td>
-                                        @else
+                                        @elseif ($loop->index == 2)
                                             <td><span style="font-size: 1.5rem;">🥉</span></td>
+                                        @else
+                                            <td class="text-center align-middle"><span style="font-size: 1.1rem;">{{$loop->index+1}}</span></td>
                                         @endif
                                         @if ($loop->index == 0)
                                             <td style="color: gold">{{App\Models\User::find($userId)->name}}</td>
                                         @elseif ($loop->index == 1)
                                             <td style="color: silver">{{App\Models\User::find($userId)->name}}</td>
-                                        @else
+                                        @elseif ($loop->index == 2)
                                             <td style="color: #FF5733">{{App\Models\User::find($userId)->name}}</td>
+                                        @else
+                                            <td>{{App\Models\User::find($userId)->name}}</td>
                                         @endif
                                         <td>{{Carbon\CarbonInterval::minutes($countInMinutes)->cascade()->forHumans()}}</td>
                                     </tr>
@@ -106,15 +114,19 @@
                                             <td><span style="font-size: 1.5rem;">🥇</span></td>
                                         @elseif ($loop->index == 1)
                                             <td><span style="font-size: 1.5rem;">🥈</span></td>
-                                        @else
+                                        @elseif ($loop->index == 2)
                                             <td><span style="font-size: 1.5rem;">🥉</span></td>
+                                        @else
+                                            <td class="text-center align-middle"><span style="font-size: 1.1rem;">{{$loop->index+1}}</span></td>
                                         @endif
                                         @if ($loop->index == 0)
                                             <td style="color: gold">{{App\Models\User::find($userId)->name}}</td>
                                         @elseif ($loop->index == 1)
                                             <td style="color: silver">{{App\Models\User::find($userId)->name}}</td>
-                                        @else
+                                        @elseif ($loop->index == 2)
                                             <td style="color: #FF5733">{{App\Models\User::find($userId)->name}}</td>
+                                        @else
+                                            <td>{{App\Models\User::find($userId)->name}}</td>
                                         @endif
                                         <td>{{Carbon\CarbonInterval::minutes($countInMinutes)->cascade()->forHumans()}}</td>
                                     </tr>
