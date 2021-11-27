@@ -8,7 +8,7 @@
     <div class="col d-flex flex-column h-sm-100 table-responsive py-4">
         <div class="row">
             <div class="col-xl-12 col-md-12 mb-5">
-                <input type="text" class="form-control" id="searchByName" onkeyup="filterTable()" placeholder="Nach einem Namen suchen...">
+                <input autocomplete="off" type="text" class="form-control" id="searchByName" onkeyup="filterTable()" placeholder="Nach einem Namen suchen...">
                 <div class="row mt-4">
                     <div class="col-md-4">
                         <h4>Top 3 diesen Monat</h4>
