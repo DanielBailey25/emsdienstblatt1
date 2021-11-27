@@ -8,10 +8,11 @@
     <div class="col d-flex flex-column h-sm-100 table-responsive py-4">
         <div class="row">
             <div class="col-xl-12 col-md-12 mb-5">
-                <div class="row">
+                <input type="text" class="form-control" id="searchByName" onkeyup="filterTable()" placeholder="Nach einem Namen suchen...">
+                <div class="row mt-4">
                     <div class="col-md-4">
                         <h4>Top 3 diesen Monat</h4>
-                        <table class="table table-striped table-hover text-white">
+                        <table class="table table-striped table-hover text-white" id="leaderBoardTableMonth">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -55,7 +56,7 @@
                     </div>
                     <div class="col-md-4">
                         <h4>Top 3 Lifetime</h4>
-                        <table class="table table-striped table-hover text-white ">
+                        <table class="table table-striped table-hover text-white" id="leaderBoardTableLifetime">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -99,7 +100,7 @@
                     </div>
                     <div class="col-md-4">
                         <h4>Top 3 diese Woche</h4>
-                        <table class="table table-striped table-hover text-white">
+                        <table class="table table-striped table-hover text-white" id="leaderBoardTableWeekly">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -146,4 +147,55 @@
         </div>
     </div>
 </div>
+
+<script>
+    function filterTable() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("searchByName");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("leaderBoardTableMonth");
+      tr = table.getElementsByTagName("tr");
+      table = document.getElementById("leaderBoardTableLifetime");
+      trLifetime = table.getElementsByTagName("tr");
+      table = document.getElementById("leaderBoardTableWeekly");
+      trWeekly = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+      for (i = 0; i < trLifetime.length; i++) {
+        td = trLifetime[i].getElementsByTagName("td")[1];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            trLifetime[i].style.display = "";
+          } else {
+            trLifetime[i].style.display = "none";
+          }
+        }
+      }
+      for (i = 0; i < trWeekly.length; i++) {
+        td = trWeekly[i].getElementsByTagName("td")[1];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            trWeekly[i].style.display = "";
+          } else {
+            trWeekly[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+
 @endsection
