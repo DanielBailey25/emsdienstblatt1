@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class WarnsController extends Controller
 {
     public function show() {
-        $warns = Warn::has('User');
+        $warns = Warn::has('user');
         return view('user_warns', ['warns' => $warns]);
     }
 
