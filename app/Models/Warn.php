@@ -22,7 +22,7 @@ class Warn extends Model
     ];
 
     public function warnedUser() {
-        return $this->belongsTo(User::class, 'warned_user_id')->first();
+        return $this->hasOne(User::class, 'warned_user_id');
     }
 
     public function creator() {
