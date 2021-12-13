@@ -26,7 +26,7 @@
             <tbody>
                 @foreach ($warns as $warn)
                      <tr>
-                        <th scope="row">{{$warn->warnedUser()->name}}</th>
+                        <th scope="row">{{$warn->warnedUser->name}}</th>
                         <td>{{$warn->content}}</td>
                         <td>{{$warn->creator()->name}}</td>
                         <td>{{$warn->created_at}}</td>
