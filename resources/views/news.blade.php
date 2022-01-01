@@ -20,7 +20,7 @@
                                 @foreach ($category->getActiveRelatedNews() as $news)
                                     <h1 class="text-white fs-3">{{$news->title}}</h1>
                                     <div class="text-white-50 fs-7 mb-2">
-                                        von: {{$news->creator->name}}, {{$news->readableStartedAt()}}
+                                        von: {{$news->creator->name ?? 'gelöschter Nutzer'}}, {{$news->readableStartedAt()}}
                                     </div>
                                     <div class="text-white fs-5">
                                         {!!nl2br(e($news->content))!!}
