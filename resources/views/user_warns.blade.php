@@ -28,7 +28,7 @@
                      <tr>
                         <th scope="row">{{$warn->warnedUser->name}}</th>
                         <td>{{$warn->content}}</td>
-                        <td>{{$warn->creator()->name}}</td>
+                        <td>{{($warn->creator() != null) ? $warn->creator()->name : 'gelöscht'}}</td>
                         <td>{{$warn->created_at}}</td>
                         <td><a href="{{route('deleteWarn', $warn->id)}}"><span class="badge bg-secondary bg-danger">löschen</span></a></td>
                     </tr>
